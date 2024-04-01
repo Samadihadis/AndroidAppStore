@@ -7,7 +7,17 @@
         android:id="@+id/introFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.intro.IntroFragment"
         android:label="IntroFragment">
+        <action
+            android:id="@+id/action_to_applicationListFragment"
+            app:destination="@+id/applicationListFragment"
+            app:popUpTo="@id/introFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/applicationListFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.list.ApplicationListFragment"
+        android:label="ApplicationListFragment">
     </fragment>
 
 </navigation>
