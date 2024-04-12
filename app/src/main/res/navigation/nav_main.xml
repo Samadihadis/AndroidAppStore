@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_main">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/appsFragment">
     <fragment
-        android:id="@+id/introFragment"
-        android:name="com.samadihadis.androidappstore.peresentaion.intro.IntroFragment"
-        android:label="IntroFragment">
-        <action
-            android:id="@+id/action_to_applicationListFragment"
-            app:destination="@+id/applicationListFragment"
-            app:popUpTo="@id/introFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-
+        android:id="@+id/appsFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.apps.AppsFragment"
+        android:label="Apps"
+        tools:layout="@layout/fragment_apps" />
     <fragment
-        android:id="@+id/applicationListFragment"
-        android:name="com.samadihadis.androidappstore.peresentaion.list.ApplicationListFragment"
-        android:label="ApplicationListFragment">
-    </fragment>
+        android:id="@+id/gamesFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.games.GamesFragment"
+        android:label="Games"
+        tools:layout="@layout/fragment_games" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.account.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account" />
 
 </navigation>
