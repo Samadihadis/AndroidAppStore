@@ -24,10 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.apps , R.id.games , R.id.account
+                R.id.navigation_apps , R.id.navigation_games , R.id.navigation_account
             )
         )
-        setupActionBarWithNavController(navController , appBarConfiguration)
+        //setupActionBarWithNavController(navController , appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
     }
 }
