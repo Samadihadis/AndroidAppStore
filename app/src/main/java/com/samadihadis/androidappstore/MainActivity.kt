@@ -2,15 +2,12 @@ package com.samadihadis.androidappstore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.samadihadis.androidappstore.databinding.ActivityMainBinding
-import com.samadihadis.androidappstore.peresentaion.apps.AppsFragment
-import com.samadihadis.androidappstore.peresentaion.games.GamesFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_apps , R.id.navigation_games , R.id.navigation_account
             )
         )
-        //setupActionBarWithNavController(navController , appBarConfiguration)
+        setupActionBarWithNavController(navController , appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
     }
 }
