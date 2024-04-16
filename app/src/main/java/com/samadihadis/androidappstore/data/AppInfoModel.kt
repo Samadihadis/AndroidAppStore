@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class AppInfoModel(
     @SerializedName("package_name") val packageName: String,
-    @SerializedName("app_availability") val appAvailability: List<AppAvailabilityModel>,
+    @SerializedName("app_availability") val appAvailability: AppAvailabilityModel,
     @SerializedName("badges") val badges: List<String>,
     @SerializedName("cat_int") val catInt: Int,
     @SerializedName("cat_key") val catKey: String,

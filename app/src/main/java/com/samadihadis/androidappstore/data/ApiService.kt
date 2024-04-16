@@ -8,11 +8,11 @@ interface ApiService {
 
     @GET("v3.0/android/apps/top_google_charts.json")
     fun topGoogleAppCharts(
-       // @Query("list_name") listName: String,
-       // @Query("cat_key") catKey: String,
-        //@Query("country") country: String,
-        //@Query("limit") limit: String,
-        //@Query("access_token") accessToken: String,
+        @Query("list_name") listName: String,
+        @Query("cat_key") catKey: String,
+        @Query("country") country: String,
+        @Query("limit") limit: String,
+        @Query("access_token") accessToken: String,
     ): Call<AppListResponseModel>
 
 }
