@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps
+package com.samadihadis.androidappstore.peresentaion.apps.application
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,12 +15,12 @@ import com.samadihadis.androidappstore.util.RetrofitClient
 import retrofit2.Call
 import retrofit2.Response
 
-class AppsFragment : Fragment() {
+class ApplicationFragment : Fragment() {
 
     private lateinit var binding: FragmentAppsBinding
     private var appInfoList = listOf<AppInfoModel>()
     private val appListAdaptor by lazy {
-        AppsListAdapter()
+        ApplicationListAdapter()
     }
 
 
@@ -47,7 +47,7 @@ class AppsFragment : Fragment() {
     private fun getData() {
         RetrofitClient.apiService.topGoogleAppCharts(
             listName = "topselling_free",
-            catKey = "OVERALL",
+            catKey = "APPLICATION",
             country = "US",
             limit = "10",
             accessToken = "9619eb26cf48144f6fd92af896bb1eb0f2458c02"

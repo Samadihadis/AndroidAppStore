@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps
+package com.samadihadis.androidappstore.peresentaion.apps.application
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
@@ -7,19 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.samadihadis.androidappstore.R
 
-class AppItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ApplicationItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val rootLayout: ConstraintLayout
     val iconImageView: AppCompatImageView
     val titleTextView: MaterialTextView
-    val descriptionTextView: MaterialTextView
+    val ratingTextView: MaterialTextView
 
     init {
         view.apply {
             rootLayout = findViewById(R.id.rootItemOneAppLayout)
             iconImageView = findViewById(R.id.itemOneAppIconImageView)
             titleTextView = findViewById(R.id.itemOneAppTitleTextView)
-            descriptionTextView = findViewById(R.id.itemOneAppDescriptionTextView)
+            ratingTextView = findViewById(R.id.itemOneAppRatingTextView)
         }
     }
 }

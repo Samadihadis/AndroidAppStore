@@ -6,7 +6,7 @@
     app:startDestination="@id/navigation_apps">
     <fragment
         android:id="@+id/navigation_apps"
-        android:name="com.samadihadis.androidappstore.peresentaion.apps.AppsFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.apps.application.ApplicationFragment"
         android:label="Apps"
         tools:layout="@layout/fragment_apps" />
     <fragment

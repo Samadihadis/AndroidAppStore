@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps
+package com.samadihadis.androidappstore.peresentaion.apps.application
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,14 +8,18 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
+import com.samadihadis.androidappstore.util.formatNumber
+import java.text.DecimalFormat
+import kotlin.math.pow
+import kotlin.math.roundToLong
 
-class AppsListAdapter : RecyclerView.Adapter<AppItemViewHolder>() {
+class ApplicationListAdapter : RecyclerView.Adapter<ApplicationItemViewHolder>() {
 
-    private var appList : MutableList<AppInfoModel> = mutableListOf()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppItemViewHolder {
+    private var appList: MutableList<AppInfoModel> = mutableListOf()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplicationItemViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_apps_one, parent, false)
-        return AppItemViewHolder(view)
+        return ApplicationItemViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -26,11 +30,11 @@ class AppsListAdapter : RecyclerView.Adapter<AppItemViewHolder>() {
         appList.addAll(appModelList)
         notifyItemRangeInserted(appList.size - 1, appModelList.size)
     }
-
-    override fun onBindViewHolder(holder: AppItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ApplicationItemViewHolder, position: Int) {
         holder.apply {
             titleTextView.text = appList[position].title
-            descriptionTextView.text = appList[position].rating.toString() + " ★"
+            val rating = appList[position].rating
+            ratingTextView.text = rating.formatNumber() + "★"
             Glide.with(rootLayout.context)
                 .load(appList[position].icon72)
                 .placeholder(R.drawable.banner_image_placeholder)
