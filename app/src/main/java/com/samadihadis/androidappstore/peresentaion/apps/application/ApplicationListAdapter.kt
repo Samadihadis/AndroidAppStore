@@ -9,9 +9,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.util.formatNumber
-import java.text.DecimalFormat
-import kotlin.math.pow
-import kotlin.math.roundToLong
+
 
 class ApplicationListAdapter : RecyclerView.Adapter<ApplicationItemViewHolder>() {
 
@@ -30,11 +28,12 @@ class ApplicationListAdapter : RecyclerView.Adapter<ApplicationItemViewHolder>()
         appList.addAll(appModelList)
         notifyItemRangeInserted(appList.size - 1, appModelList.size)
     }
+
     override fun onBindViewHolder(holder: ApplicationItemViewHolder, position: Int) {
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
-            ratingTextView.text = rating.formatNumber() + "★"
+            ratingTextView.text = rating.formatNumber() + " " + "★"
             Glide.with(rootLayout.context)
                 .load(appList[position].icon72)
                 .placeholder(R.drawable.banner_image_placeholder)

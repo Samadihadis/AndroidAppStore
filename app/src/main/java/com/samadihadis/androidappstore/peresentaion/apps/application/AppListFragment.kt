@@ -15,7 +15,7 @@ import com.samadihadis.androidappstore.util.RetrofitClient
 import retrofit2.Call
 import retrofit2.Response
 
-class ApplicationFragment : Fragment() {
+class AppListFragment : Fragment() {
 
     private lateinit var binding: FragmentAppsBinding
     private var appInfoList = listOf<AppInfoModel>()
@@ -38,7 +38,7 @@ class ApplicationFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        with(binding.appRecyclerView1) {
+        with(binding.applicationRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appListAdaptor
         }
