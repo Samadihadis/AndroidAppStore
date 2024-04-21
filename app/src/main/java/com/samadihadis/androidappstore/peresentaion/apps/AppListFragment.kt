@@ -13,6 +13,7 @@ import com.samadihadis.androidappstore.data.AppListResponseModel
 import com.samadihadis.androidappstore.databinding.FragmentAppsBinding
 import com.samadihadis.androidappstore.peresentaion.apps.application.ApplicationListAdapter
 import com.samadihadis.androidappstore.peresentaion.apps.business.BusinessListAdapter
+import com.samadihadis.androidappstore.peresentaion.apps.sport.SportListAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
 import retrofit2.Call
 import retrofit2.Response
@@ -22,11 +23,15 @@ class AppListFragment : Fragment() {
     private lateinit var binding: FragmentAppsBinding
     private var applicationInfoList = listOf<AppInfoModel>()
     private var businessInfoList = listOf<AppInfoModel>()
+    private var sportInfoList = listOf<AppInfoModel>()
     private val applicationListAdaptor by lazy {
         ApplicationListAdapter()
     }
     private val businessListAdaptor by lazy {
         BusinessListAdapter()
+    }
+    private val sportListAdapter by lazy {
+        SportListAdapter()
     }
 
 
@@ -43,6 +48,8 @@ class AppListFragment : Fragment() {
         getDataApplication()
         setupAdapterBusiness()
         getDataBusiness()
+        setupAdapterSport()
+        getDataSport()
     }
 
     private fun setupAdapterApplication() {
@@ -56,6 +63,13 @@ class AppListFragment : Fragment() {
         with(binding.businessRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = businessListAdaptor
+        }
+    }
+
+    private fun setupAdapterSport() {
+        with(binding.sportRecyclerView) {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            adapter = sportListAdapter
         }
     }
 
@@ -129,6 +143,44 @@ class AppListFragment : Fragment() {
             if (!response.body()?.appList.isNullOrEmpty()) {
                 businessInfoList = response.body()?.appList!!
                 businessListAdaptor.addItemList(businessInfoList)
+            } else {
+                Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(requireContext(), "Got an error!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getDataSport() {
+        RetrofitClient.apiService.topGoogleAppCharts(
+            listName = "topselling_free",
+            catKey = "SPORTS",
+            country = "US",
+            limit = "10",
+            accessToken = "9619eb26cf48144f6fd92af896bb1eb0f2458c02"
+        ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
+            override fun onResponse(
+                call: Call<AppListResponseModel>,
+                response: Response<AppListResponseModel>
+            ) {
+                onServerResponseSport(response)
+            }
+
+            override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
+                Toast.makeText(
+                    requireContext(),
+                    "${t.localizedMessage}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
+
+    private fun onServerResponseSport(response: Response<AppListResponseModel>) {
+        if (response.isSuccessful) {
+            if (!response.body()?.appList.isNullOrEmpty()) {
+                sportInfoList = response.body()?.appList!!
+                sportListAdapter.addItemList(sportInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
             }
