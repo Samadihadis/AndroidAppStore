@@ -39,6 +39,10 @@ class ApplicationListAdapter : RecyclerView.Adapter<ApplicationItemViewHolder>()
                 .placeholder(R.drawable.banner_image_placeholder)
                 .transform(CenterCrop(), RoundedCorners(60))
                 .into(iconImageView)
+
+            rootLayout.setOnClickListener {
+
+            }
         }
     }
 }
