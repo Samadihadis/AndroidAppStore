@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootItemTwoAppLayout"
+    android:id="@+id/rootItemBoxStyleLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/itemTwoAppIconImageView"
+        android:id="@+id/boxStyleIconImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginVertical="8dp"
@@ -19,44 +19,44 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/itemTwoAppTitleTextView"
+        android:id="@+id/boxStyleTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:lines="1"
         android:textColor="#121212"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/itemTwoAppDescriptionTextView"
-        app:layout_constraintStart_toEndOf="@id/itemTwoAppIconImageView"
-        app:layout_constraintTop_toTopOf="@id/itemTwoAppIconImageView"
-        app:layout_constraintEnd_toStartOf="@id/itemTwoAppRatingTextView"
+        app:layout_constraintBottom_toTopOf="@+id/boxStyleDescriptionTextView"
+        app:layout_constraintStart_toEndOf="@id/boxStyleIconImageView"
+        app:layout_constraintTop_toTopOf="@id/boxStyleIconImageView"
+        app:layout_constraintEnd_toStartOf="@id/boxStyleRatingTextView"
         app:layout_constraintVertical_chainStyle="spread"
         tools:text="Title" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/itemTwoAppDescriptionTextView"
+        android:id="@+id/boxStyleDescriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:lines="1"
         android:textColor="#121212"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/itemTwoAppIconImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/boxStyleIconImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/itemTwoAppIconImageView"
-        app:layout_constraintTop_toBottomOf="@id/itemTwoAppTitleTextView"
+        app:layout_constraintStart_toEndOf="@id/boxStyleIconImageView"
+        app:layout_constraintTop_toBottomOf="@id/boxStyleTitleTextView"
         tools:text="Description" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/itemTwoAppRatingTextView"
+        android:id="@+id/boxStyleRatingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:textColor="#121212"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/itemTwoAppTitleTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/boxStyleTitleTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/itemTwoAppTitleTextView"
+        app:layout_constraintTop_toTopOf="@id/boxStyleTitleTextView"
         tools:text="Rating" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

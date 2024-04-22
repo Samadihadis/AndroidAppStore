@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootItemThreeAppLayout"
+    android:id="@+id/rootItemBannerStyleLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/itemThreeAppBannerImageView"
+        android:id="@+id/bannerStyleImageView"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginHorizontal="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/itemThreeAppIconImageView"
+        android:id="@+id/bannerStyleIconImageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginVertical="8dp"
@@ -28,51 +28,51 @@
         android:src="@drawable/baseline_apps_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemThreeAppBannerImageView" />
+        app:layout_constraintTop_toBottomOf="@id/bannerStyleImageView" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/itemThreeAppTitleTextView"
+        android:id="@+id/bannerStyleTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:maxLength="20"
         android:textColor="#121212"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@id/itemThreeAppDescriptionTextView"
-        app:layout_constraintEnd_toStartOf="@id/itemThreeAppRatingTextView"
-        app:layout_constraintStart_toEndOf="@+id/itemThreeAppIconImageView"
-        app:layout_constraintTop_toTopOf="@id/itemThreeAppIconImageView"
+        app:layout_constraintBottom_toTopOf="@id/bannerStyleDescriptionTextView"
+        app:layout_constraintEnd_toStartOf="@id/bannerStyleRatingTextView"
+        app:layout_constraintStart_toEndOf="@+id/bannerStyleIconImageView"
+        app:layout_constraintTop_toTopOf="@id/bannerStyleIconImageView"
         app:layout_constraintVertical_chainStyle="spread"
         tools:text="Title" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/itemThreeAppRatingTextView"
+        android:id="@+id/bannerStyleRatingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:textColor="#121212"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/itemThreeAppTitleTextView"
-        app:layout_constraintBottom_toBottomOf="@id/itemThreeAppTitleTextView"
+        app:layout_constraintTop_toTopOf="@id/bannerStyleTitleTextView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerStyleTitleTextView"
         tools:text="Rating" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/itemThreeAppDescriptionTextView"
+        android:id="@+id/bannerStyleDescriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:lines="2"
         android:textColor="#121212"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/itemThreeAppIconImageView"
-        app:layout_constraintEnd_toStartOf="@id/installButton"
-        app:layout_constraintStart_toEndOf="@id/itemThreeAppIconImageView"
-        app:layout_constraintTop_toBottomOf="@id/itemThreeAppTitleTextView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerStyleIconImageView"
+        app:layout_constraintEnd_toStartOf="@id/bannerStyleInstallButton"
+        app:layout_constraintStart_toEndOf="@id/bannerStyleIconImageView"
+        app:layout_constraintTop_toBottomOf="@id/bannerStyleTitleTextView"
         tools:text="Description" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/installButton"
+        android:id="@+id/bannerStyleInstallButton"
         android:layout_width="72dp"
         android:layout_height="42dp"
         android:layout_marginEnd="8dp"
@@ -84,9 +84,9 @@
         android:paddingEnd="0dp"
         android:paddingStart="0dp"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@id/itemThreeAppDescriptionTextView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerStyleDescriptionTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemThreeAppRatingTextView"
-        app:layout_constraintTop_toTopOf="@id/itemThreeAppDescriptionTextView" />
+        app:layout_constraintTop_toBottomOf="@id/bannerStyleRatingTextView"
+        app:layout_constraintTop_toTopOf="@id/bannerStyleDescriptionTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

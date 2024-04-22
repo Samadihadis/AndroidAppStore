@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.sport
+package com.samadihadis.androidappstore.peresentaion.apps.bannerStyle
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.samadihadis.androidappstore.R
 
-class SportItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
+class AppBannerStyleViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
     val rootLayout: ConstraintLayout
     val bannerImageView: AppCompatImageView
@@ -18,12 +18,12 @@ class SportItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
     init {
         view.apply {
-            rootLayout = findViewById(R.id.rootItemThreeAppLayout)
-            bannerImageView = findViewById(R.id.itemThreeAppBannerImageView)
-            iconImageView = findViewById(R.id.itemThreeAppIconImageView)
-            titleTextView = findViewById(R.id.itemThreeAppTitleTextView)
-            descriptionTextView = findViewById(R.id.itemThreeAppDescriptionTextView)
-            ratingTextView = findViewById(R.id.itemThreeAppRatingTextView)
+            rootLayout = findViewById(R.id.rootItemBannerStyleLayout)
+            bannerImageView = findViewById(R.id.bannerStyleImageView)
+            iconImageView = findViewById(R.id.bannerStyleIconImageView)
+            titleTextView = findViewById(R.id.bannerStyleTitleTextView)
+            descriptionTextView = findViewById(R.id.bannerStyleDescriptionTextView)
+            ratingTextView = findViewById(R.id.bannerStyleRatingTextView)
         }
     }
 }

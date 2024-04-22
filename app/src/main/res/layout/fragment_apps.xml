@@ -9,70 +9,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleSportTextView"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bannerStyleRecyclerView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Sport"
-            android:textColor="#151515"
-            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/nextSportImageView"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/next"
-            android:tint="#403F3F"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/titleSportTextView" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/sportRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleSportTextView" />
-
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleApplicationTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Application"
-            android:textColor="#151515"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sportRecyclerView" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/nextApplicationImageView"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/next"
-            android:tint="#403F3F"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/titleApplicationTextView" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/applicationRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleApplicationTextView" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleBusinessTextView"
+            android:id="@+id/smallDetailStyleTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -81,27 +27,58 @@
             android:textColor="#151515"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/applicationRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/bannerStyleRecyclerView" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/nextBusinessImageView"
+            android:id="@+id/nextSmallDetailStyleImageView"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/next"
-            android:tint="#403F3F"
+            android:tint="#595757"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/titleBusinessTextView" />
+            app:layout_constraintTop_toTopOf="@+id/smallDetailStyleTitleTextView" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/businessRecyclerView"
+            android:id="@+id/smallDetailStyleRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/boxStyleTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Sport"
+            android:textColor="#151515"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleRecyclerView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/nextBoxStyleImageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/next"
+            android:tint="#595757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/boxStyleTitleTextView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/boxStyleRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleBusinessTextView"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/boxStyleTitleTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

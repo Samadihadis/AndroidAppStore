@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.business
+package com.samadihadis.androidappstore.peresentaion.apps.boxStyle
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,13 +11,13 @@ import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.util.formatNumber
 
 
-class BusinessListAdapter : RecyclerView.Adapter<BusinessItemViewHolder>() {
+class AppBoxStyleAdapter : RecyclerView.Adapter<AppBoxStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusinessItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppBoxStyleViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_apps_two, parent, false)
-        return BusinessItemViewHolder(view)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_apps_box_style, parent, false)
+        return AppBoxStyleViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +29,7 @@ class BusinessListAdapter : RecyclerView.Adapter<BusinessItemViewHolder>() {
         notifyItemRangeInserted(appList.size - 1, appModelList.size)
     }
 
-    override fun onBindViewHolder(holder: BusinessItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AppBoxStyleViewHolder, position: Int) {
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating

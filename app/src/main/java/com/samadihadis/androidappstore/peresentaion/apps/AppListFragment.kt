@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.data.AppListResponseModel
 import com.samadihadis.androidappstore.databinding.FragmentAppsBinding
-import com.samadihadis.androidappstore.peresentaion.apps.application.ApplicationListAdapter
-import com.samadihadis.androidappstore.peresentaion.apps.business.BusinessListAdapter
-import com.samadihadis.androidappstore.peresentaion.apps.sport.SportListAdapter
+import com.samadihadis.androidappstore.peresentaion.apps.smallDetailStyle.AppSmallDetailStyleAdapter
+import com.samadihadis.androidappstore.peresentaion.apps.boxStyle.AppBoxStyleAdapter
+import com.samadihadis.androidappstore.peresentaion.apps.bannerStyle.AppBannerStyleAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
 import retrofit2.Call
 import retrofit2.Response
@@ -21,17 +21,18 @@ import retrofit2.Response
 class AppListFragment : Fragment() {
 
     private lateinit var binding: FragmentAppsBinding
-    private var applicationInfoList = listOf<AppInfoModel>()
-    private var businessInfoList = listOf<AppInfoModel>()
-    private var sportInfoList = listOf<AppInfoModel>()
-    private val applicationListAdaptor by lazy {
-        ApplicationListAdapter()
+    private var appBannerStyleInfoList = listOf<AppInfoModel>()
+    private var appSmallDetailStyleInfoList = listOf<AppInfoModel>()
+    private var appBoxStyleInfoList = listOf<AppInfoModel>()
+
+    private val appBannerStyleAdaptor by lazy {
+        AppBannerStyleAdapter()
     }
-    private val businessListAdaptor by lazy {
-        BusinessListAdapter()
+    private val appSmallDetailStyleAdaptor by lazy {
+        AppSmallDetailStyleAdapter()
     }
-    private val sportListAdapter by lazy {
-        SportListAdapter()
+    private val appBoxStyleAdapter by lazy {
+        AppBoxStyleAdapter()
     }
 
 
@@ -44,36 +45,36 @@ class AppListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupAdapterApplication()
-        getDataApplication()
-        setupAdapterBusiness()
-        getDataBusiness()
-        setupAdapterSport()
-        getDataSport()
+        setupBannerStyleAdapter()
+        getDataBannerStyle()
+        setupSmallDetailStyleAdapter()
+        getDataSmallDetailStyle()
+        setupBoxStyleAdapter()
+        getDataBoxStyle()
     }
 
-    private fun setupAdapterApplication() {
-        with(binding.applicationRecyclerView) {
+    private fun setupBannerStyleAdapter() {
+        with(binding.bannerStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-            adapter = applicationListAdaptor
+            adapter = appBannerStyleAdaptor
         }
     }
 
-    private fun setupAdapterBusiness() {
-        with(binding.businessRecyclerView) {
+    private fun setupSmallDetailStyleAdapter() {
+        with(binding.smallDetailStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-            adapter = businessListAdaptor
+            adapter = appSmallDetailStyleAdaptor
         }
     }
 
-    private fun setupAdapterSport() {
-        with(binding.sportRecyclerView) {
+    private fun setupBoxStyleAdapter() {
+        with(binding.boxStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-            adapter = sportListAdapter
+            adapter = appBoxStyleAdapter
         }
     }
 
-    private fun getDataApplication() {
+    private fun getDataBannerStyle() {
         RetrofitClient.apiService.topGoogleAppCharts(
             listName = "topselling_free",
             catKey = "APPLICATION",
@@ -85,7 +86,7 @@ class AppListFragment : Fragment() {
                 call: Call<AppListResponseModel>,
                 response: Response<AppListResponseModel>
             ) {
-                onServerResponseApplication(response)
+                onServerResponseBannerStyle(response)
             }
 
             override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
@@ -98,11 +99,11 @@ class AppListFragment : Fragment() {
         })
     }
 
-    private fun onServerResponseApplication(response: Response<AppListResponseModel>) {
+    private fun onServerResponseBannerStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
-                applicationInfoList = response.body()?.appList!!
-                applicationListAdaptor.addItemList(applicationInfoList)
+                appBannerStyleInfoList = response.body()?.appList!!
+                appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
             }
@@ -113,7 +114,7 @@ class AppListFragment : Fragment() {
 
     }
 
-    private fun getDataBusiness() {
+    private fun getDataSmallDetailStyle() {
         RetrofitClient.apiService.topGoogleAppCharts(
             listName = "topselling_free",
             catKey = "BUSINESS",
@@ -125,7 +126,7 @@ class AppListFragment : Fragment() {
                 call: Call<AppListResponseModel>,
                 response: Response<AppListResponseModel>
             ) {
-                onServerResponseBusiness(response)
+                onServerResponseSmallDetailStyle(response)
             }
 
             override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
@@ -138,11 +139,11 @@ class AppListFragment : Fragment() {
         })
     }
 
-    private fun onServerResponseBusiness(response: Response<AppListResponseModel>) {
+    private fun onServerResponseSmallDetailStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
-                businessInfoList = response.body()?.appList!!
-                businessListAdaptor.addItemList(businessInfoList)
+                appSmallDetailStyleInfoList = response.body()?.appList!!
+                appSmallDetailStyleAdaptor.addItemList(appSmallDetailStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
             }
@@ -151,7 +152,7 @@ class AppListFragment : Fragment() {
         }
     }
 
-    private fun getDataSport() {
+    private fun getDataBoxStyle() {
         RetrofitClient.apiService.topGoogleAppCharts(
             listName = "topselling_free",
             catKey = "SPORTS",
@@ -163,7 +164,7 @@ class AppListFragment : Fragment() {
                 call: Call<AppListResponseModel>,
                 response: Response<AppListResponseModel>
             ) {
-                onServerResponseSport(response)
+                onServerResponseBoxStyle(response)
             }
 
             override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
@@ -176,11 +177,11 @@ class AppListFragment : Fragment() {
         })
     }
 
-    private fun onServerResponseSport(response: Response<AppListResponseModel>) {
+    private fun onServerResponseBoxStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
-                sportInfoList = response.body()?.appList!!
-                sportListAdapter.addItemList(sportInfoList)
+                appBoxStyleInfoList = response.body()?.appList!!
+                appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
             }

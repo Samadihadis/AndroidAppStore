@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.business
+package com.samadihadis.androidappstore.peresentaion.apps.boxStyle
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.samadihadis.androidappstore.R
 
-class BusinessItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class AppBoxStyleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val rootLayout: ConstraintLayout
     val iconImageView: AppCompatImageView
@@ -17,11 +17,11 @@ class BusinessItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     init {
         view.apply {
-            rootLayout = findViewById(R.id.rootItemTwoAppLayout)
-            iconImageView = findViewById(R.id.itemTwoAppIconImageView)
-            titleTextView = findViewById(R.id.itemTwoAppTitleTextView)
-            descriptionTextView = findViewById(R.id.itemTwoAppDescriptionTextView)
-            ratingTextView = findViewById(R.id.itemTwoAppRatingTextView)
+            rootLayout = findViewById(R.id.rootItemBoxStyleLayout)
+            iconImageView = findViewById(R.id.boxStyleIconImageView)
+            titleTextView = findViewById(R.id.boxStyleTitleTextView)
+            descriptionTextView = findViewById(R.id.boxStyleDescriptionTextView)
+            ratingTextView = findViewById(R.id.boxStyleRatingTextView)
         }
     }
 }
