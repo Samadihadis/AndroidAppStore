@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.smallDetailStyle
+package com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,14 +10,13 @@ import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.util.formatNumber
 
-
-class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewHolder>() {
+class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppSmallDetailStyleViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppBannerStyleViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_apps_small_detail_style, parent, false)
-        return AppSmallDetailStyleViewHolder(view)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_app_banner_style, parent, false)
+        return AppBannerStyleViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -29,17 +28,22 @@ class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewH
         notifyItemRangeInserted(appList.size - 1, appModelList.size)
     }
 
-    override fun onBindViewHolder(holder: AppSmallDetailStyleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AppBannerStyleViewHolder, position: Int) {
         holder.apply {
             titleTextView.text = appList[position].title
+            descriptionTextView.text = appList[position].shortDesc
             val rating = appList[position].rating
             ratingTextView.text = rating.formatNumber() + " " + "★"
+            Glide.with(rootLayout.context)
+                .load(appList[position].featuredGraphic)
+                .placeholder(R.drawable.banner_image_placeholder)
+                .transform(CenterCrop(), RoundedCorners(60))
+                .into(bannerImageView)
             Glide.with(rootLayout.context)
                 .load(appList[position].icon72)
                 .placeholder(R.drawable.banner_image_placeholder)
                 .transform(CenterCrop(), RoundedCorners(60))
                 .into(iconImageView)
-
             rootLayout.setOnClickListener {
 
             }

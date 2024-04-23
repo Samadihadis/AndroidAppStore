@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.bannerStyle
+package com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView

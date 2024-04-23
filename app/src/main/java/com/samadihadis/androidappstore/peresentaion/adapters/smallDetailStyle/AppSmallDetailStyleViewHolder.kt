@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.smallDetailStyle
+package com.samadihadis.androidappstore.peresentaion.adapters.smallDetailStyle
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView

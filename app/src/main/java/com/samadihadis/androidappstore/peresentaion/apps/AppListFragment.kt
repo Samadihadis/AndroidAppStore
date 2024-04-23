@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.data.AppListResponseModel
 import com.samadihadis.androidappstore.databinding.FragmentAppsBinding
-import com.samadihadis.androidappstore.peresentaion.apps.smallDetailStyle.AppSmallDetailStyleAdapter
-import com.samadihadis.androidappstore.peresentaion.apps.boxStyle.AppBoxStyleAdapter
-import com.samadihadis.androidappstore.peresentaion.apps.bannerStyle.AppBannerStyleAdapter
+import com.samadihadis.androidappstore.peresentaion.adapters.smallDetailStyle.AppSmallDetailStyleAdapter
+import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
+import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBannerStyleAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
 import com.samadihadis.androidappstore.util.gone
 import com.samadihadis.androidappstore.util.visible

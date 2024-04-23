@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.apps.boxStyle
+package com.samadihadis.androidappstore.peresentaion.adapters.boxStyle
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
