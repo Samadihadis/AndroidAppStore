@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_games"
+        android:id="@+id/gamesFragment"
         android:icon="@drawable/game"
         android:title="Games" />
 
     <item
-        android:id="@+id/navigation_apps"
+        android:id="@+id/appsFragment"
         android:icon="@drawable/baseline_apps_24"
         android:title="Apps" />
 
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/accountFragment"
         android:icon="@drawable/account"
         android:title="Account" />
 
