@@ -1,38 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerFrameLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:shimmer_duration="2000">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <include layout="@layout/item_app_banner_style_shimmer" />
-
-                <include layout="@layout/item_app_title_recycler_shimmer" />
-
-                <include layout="@layout/item_apps_small_detail_style_shimmer" />
-
-                <include layout="@layout/item_app_title_recycler_shimmer" />
-
-                <include layout="@layout/item_apps_box_style_shimmer" />
-
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bannerStyleRecyclerView"
@@ -51,8 +27,10 @@
             android:text="Business"
             android:textColor="#151515"
             android:textSize="20sp"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bannerStyleRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/bannerStyleRecyclerView"
+            tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/nextSmallDetailStyleImageView"
@@ -62,9 +40,9 @@
             android:src="@drawable/next"
             android:tint="#595757"
             android:visibility="invisible"
-            tools:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/smallDetailStyleTitleTextView" />
+            app:layout_constraintTop_toTopOf="@+id/smallDetailStyleTitleTextView"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/smallDetailStyleRecyclerView"
@@ -84,8 +62,10 @@
             android:text="Sport"
             android:textColor="#151515"
             android:textSize="20sp"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleRecyclerView"
+            tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/nextBoxStyleImageView"
@@ -95,9 +75,9 @@
             android:src="@drawable/next"
             android:tint="#595757"
             android:visibility="invisible"
-            tools:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/boxStyleTitleTextView" />
+            app:layout_constraintTop_toTopOf="@+id/boxStyleTitleTextView"
+            tools:visibility="visible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/boxStyleRecyclerView"
@@ -108,6 +88,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/boxStyleTitleTextView" />
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:shimmer_duration="2000">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_app_banner_style_shimmer" />
+
+                <include layout="@layout/item_app_title_recycler_shimmer" />
+
+                <include layout="@layout/item_apps_small_detail_style_shimmer" />
+
+                <include layout="@layout/item_app_title_recycler_shimmer" />
+
+                <include layout="@layout/item_apps_box_style_shimmer" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

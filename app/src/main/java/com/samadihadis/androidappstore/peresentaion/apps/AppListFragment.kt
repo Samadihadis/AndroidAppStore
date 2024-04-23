@@ -64,7 +64,6 @@ class AppListFragment : Fragment() {
         shimmerFrameLayout.startShimmer()
 
         smallDetailStyleTitleTextView.gone()
-        smallDetailStyleTitleTextView.text = "Business"
         nextSmallDetailStyleImageView.gone()
 
         boxStyleTitleTextView.gone()
@@ -109,7 +108,7 @@ class AppListFragment : Fragment() {
             catKey = "APPLICATION",
             country = "US",
             limit = "10",
-            accessToken = "b56bf9f5005b125f44c2f07484c8af44feb7c2b2"
+            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -150,7 +149,7 @@ class AppListFragment : Fragment() {
             catKey = "BUSINESS",
             country = "US",
             limit = "10",
-            accessToken = "b56bf9f5005b125f44c2f07484c8af44feb7c2b2"
+            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -189,7 +188,7 @@ class AppListFragment : Fragment() {
             catKey = "SPORTS",
             country = "US",
             limit = "10",
-            accessToken = "b56bf9f5005b125f44c2f07484c8af44feb7c2b2"
+            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
