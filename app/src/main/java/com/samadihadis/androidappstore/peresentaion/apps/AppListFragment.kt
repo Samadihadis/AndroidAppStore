@@ -15,6 +15,8 @@ import com.samadihadis.androidappstore.peresentaion.apps.smallDetailStyle.AppSma
 import com.samadihadis.androidappstore.peresentaion.apps.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.apps.bannerStyle.AppBannerStyleAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
+import com.samadihadis.androidappstore.util.gone
+import com.samadihadis.androidappstore.util.visible
 import retrofit2.Call
 import retrofit2.Response
 
@@ -45,12 +47,39 @@ class AppListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupBannerStyleAdapter()
-        getDataBannerStyle()
         setupSmallDetailStyleAdapter()
-        getDataSmallDetailStyle()
         setupBoxStyleAdapter()
+
+        startLoadingState()
+
+        getDataBannerStyle()
+        getDataSmallDetailStyle()
         getDataBoxStyle()
+    }
+
+    private fun startLoadingState() = with(binding) {
+        shimmerFrameLayout.visible()
+        shimmerFrameLayout.startShimmer()
+
+        smallDetailStyleTitleTextView.gone()
+        smallDetailStyleTitleTextView.text = "Business"
+        nextSmallDetailStyleImageView.gone()
+
+        boxStyleTitleTextView.gone()
+        nextBoxStyleImageView.gone()
+    }
+
+    private fun stopLoadingState() = with(binding) {
+        shimmerFrameLayout.stopShimmer()
+        shimmerFrameLayout.gone()
+
+        smallDetailStyleTitleTextView.visible()
+        nextSmallDetailStyleImageView.visible()
+
+        boxStyleTitleTextView.visible()
+        nextBoxStyleImageView.visible()
     }
 
     private fun setupBannerStyleAdapter() {
@@ -80,7 +109,7 @@ class AppListFragment : Fragment() {
             catKey = "APPLICATION",
             country = "US",
             limit = "10",
-            accessToken = "9619eb26cf48144f6fd92af896bb1eb0f2458c02"
+            accessToken = "b56bf9f5005b125f44c2f07484c8af44feb7c2b2"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -102,6 +131,7 @@ class AppListFragment : Fragment() {
     private fun onServerResponseBannerStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
+                stopLoadingState()
                 appBannerStyleInfoList = response.body()?.appList!!
                 appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
             } else {
@@ -120,7 +150,7 @@ class AppListFragment : Fragment() {
             catKey = "BUSINESS",
             country = "US",
             limit = "10",
-            accessToken = "9619eb26cf48144f6fd92af896bb1eb0f2458c02"
+            accessToken = "b56bf9f5005b125f44c2f07484c8af44feb7c2b2"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -142,6 +172,7 @@ class AppListFragment : Fragment() {
     private fun onServerResponseSmallDetailStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
+                stopLoadingState()
                 appSmallDetailStyleInfoList = response.body()?.appList!!
                 appSmallDetailStyleAdaptor.addItemList(appSmallDetailStyleInfoList)
             } else {
@@ -158,7 +189,7 @@ class AppListFragment : Fragment() {
             catKey = "SPORTS",
             country = "US",
             limit = "10",
-            accessToken = "9619eb26cf48144f6fd92af896bb1eb0f2458c02"
+            accessToken = "b56bf9f5005b125f44c2f07484c8af44feb7c2b2"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -180,6 +211,7 @@ class AppListFragment : Fragment() {
     private fun onServerResponseBoxStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
+                stopLoadingState()
                 appBoxStyleInfoList = response.body()?.appList!!
                 appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
             } else {

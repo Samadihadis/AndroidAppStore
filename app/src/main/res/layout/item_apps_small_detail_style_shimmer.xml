@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootItemSmallDetailStyleLayout"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:paddingHorizontal="8dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/smallDetailStyleIconImageView"
+        android:layout_width="114dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/shimmer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/smallDetailStyleTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/shimmer"
+        android:lines="1"
+        android:maxLength="15"
+        android:textColor="#121212"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleIconImageView" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/smallDetailStyleAppRatingTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/shimmer"
+        android:lines="1"
+        android:maxLength="10"
+        android:textColor="#121212"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleTitleTextView"
+        app:layout_constraintVertical_bias="0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
