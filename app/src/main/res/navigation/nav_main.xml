@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/navigation_apps">
+    app:startDestination="@id/appsFragment">
     <fragment
-        android:id="@+id/navigation_apps"
+        android:id="@+id/appsFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.apps.AppListFragment"
         android:label="Apps"
-        tools:layout="@layout/fragment_apps" />
+        tools:layout="@layout/fragment_apps"/>
     <fragment
-        android:id="@+id/navigation_games"
+        android:id="@+id/gamesFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.games.GamesFragment"
         android:label="Games"
         tools:layout="@layout/fragment_games" />
     <fragment
-        android:id="@+id/navigation_account"
+        android:id="@+id/accountFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.account.AccountFragment"
         android:label="Account"
         tools:layout="@layout/fragment_account" />
+
 
 </navigation>
