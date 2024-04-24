@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.samadihadis.androidappstore.databinding.FragmentGamesBinding
 
-class GamesFragment : Fragment() {
+class GameHomeFragment : Fragment() {
     private lateinit var binding: FragmentGamesBinding
 
     override fun onCreateView(

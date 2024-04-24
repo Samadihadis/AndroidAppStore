@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.data.AppListResponseModel
-import com.samadihadis.androidappstore.databinding.FragmentAppsBinding
+import com.samadihadis.androidappstore.databinding.FragmentAppHomeBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.smallDetailStyle.AppSmallDetailStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBannerStyleAdapter
@@ -20,9 +20,9 @@ import com.samadihadis.androidappstore.util.visible
 import retrofit2.Call
 import retrofit2.Response
 
-class AppListFragment : Fragment() {
+class AppHomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentAppsBinding
+    private lateinit var binding: FragmentAppHomeBinding
     private var appBannerStyleInfoList = listOf<AppInfoModel>()
     private var appSmallDetailStyleInfoList = listOf<AppInfoModel>()
     private var appBoxStyleInfoList = listOf<AppInfoModel>()
@@ -41,7 +41,7 @@ class AppListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAppsBinding.inflate(inflater, container, false)
+        binding = FragmentAppHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -57,6 +57,12 @@ class AppListFragment : Fragment() {
         getDataBannerStyle()
         getDataSmallDetailStyle()
         getDataBoxStyle()
+    }
+
+    private fun setupViews() = with(binding) {
+        nextSmallDetailStyleImageView.setOnClickListener {
+
+        }
     }
 
     private fun startLoadingState() = with(binding) {
