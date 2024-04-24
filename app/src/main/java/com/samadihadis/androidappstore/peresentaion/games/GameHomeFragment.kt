@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.samadihadis.androidappstore.databinding.FragmentGamesBinding
+import com.samadihadis.androidappstore.databinding.FragmentGameHomeBinding
 
 class GameHomeFragment : Fragment() {
-    private lateinit var binding: FragmentGamesBinding
+    private lateinit var binding: FragmentGameHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentGamesBinding.inflate(inflater, container, false)
+        binding = FragmentGameHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -8,7 +8,23 @@
         android:id="@+id/appHomeFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.apps.AppListFragment"
         android:label="Apps"
-        tools:layout="@layout/fragment_app_home"/>
+        tools:layout="@layout/fragment_app_home">
+        <action
+            android:id="@+id/action_to_appListFragment"
+            app:destination="@+id/appListFragment"
+            app:popUpTo="@id/appHomeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/appListFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.list.AppListFragment"
+        android:label="AppList"
+        tools:layout="@layout/fragment_app_list">
+        <argument
+            android:name="appInfoModel"
+            app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
+    </fragment>
+
     <fragment
         android:id="@+id/gameHomeFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.games.GamesFragment"

@@ -1,4 +1,4 @@
-package com.samadihadis.androidappstore.peresentaion.adapters.smallDetailStyle
+package com.samadihadis.androidappstore.peresentaion.adapters.gridStyle
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,13 +11,13 @@ import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.util.formatNumber
 
 
-class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewHolder>() {
+class GridStyleAdapter : RecyclerView.Adapter<GridStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppSmallDetailStyleViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridStyleViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_apps_small_detail_style, parent, false)
-        return AppSmallDetailStyleViewHolder(view)
+        return GridStyleViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +29,7 @@ class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewH
         notifyItemRangeInserted(appList.size - 1, appModelList.size)
     }
 
-    override fun onBindViewHolder(holder: AppSmallDetailStyleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GridStyleViewHolder, position: Int) {
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
