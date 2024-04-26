@@ -16,10 +16,10 @@ class AppGridStyleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     init {
         view.apply {
-            rootLayout = findViewById(R.id.rootItemSmallDetailStyleLayout)
-            iconImageView = findViewById(R.id.smallDetailStyleIconImageView)
-            titleTextView = findViewById(R.id.smallDetailStyleTitleTextView)
-            ratingTextView = findViewById(R.id.smallDetailStyleAppRatingTextView)
+            rootLayout = findViewById(R.id.rootItemGridStyleLayout)
+            iconImageView = findViewById(R.id.gridStyleIconImageView)
+            titleTextView = findViewById(R.id.gridStyleTitleTextView)
+            ratingTextView = findViewById(R.id.gridStyleAppRatingTextView)
         }
     }
 }

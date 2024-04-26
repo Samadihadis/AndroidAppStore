@@ -19,7 +19,7 @@ class AppGridStyleAdapter : RecyclerView.Adapter<AppGridStyleViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppGridStyleViewHolder {
         val view =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_apps_small_detail_style, parent, false)
+                .inflate(R.layout.item_apps_grid_style, parent, false)
         return AppGridStyleViewHolder(view)
     }
 

@@ -38,7 +38,7 @@ class AppListFragment : Fragment() {
 
     private fun setupGridStyleAdapter() {
         with(binding.gridStyleRecyclerView) {
-            layoutManager = GridLayoutManager(requireContext(), 2)
+            layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = appGridStyleAdapter
         }
     }
