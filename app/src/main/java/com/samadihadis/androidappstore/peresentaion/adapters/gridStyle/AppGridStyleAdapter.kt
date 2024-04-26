@@ -8,16 +8,19 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
+import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleViewHolder
 import com.samadihadis.androidappstore.util.formatNumber
 
 
-class GridStyleAdapter : RecyclerView.Adapter<GridStyleViewHolder>() {
+class AppGridStyleAdapter : RecyclerView.Adapter<AppGridStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridStyleViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppGridStyleViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_apps_small_detail_style, parent, false)
-        return GridStyleViewHolder(view)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_apps_small_detail_style, parent, false)
+        return AppGridStyleViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +32,7 @@ class GridStyleAdapter : RecyclerView.Adapter<GridStyleViewHolder>() {
         notifyItemRangeInserted(appList.size - 1, appModelList.size)
     }
 
-    override fun onBindViewHolder(holder: GridStyleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AppGridStyleViewHolder, position: Int) {
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating

@@ -58,11 +58,19 @@ class AppHomeFragment : Fragment() {
         getDataBannerStyle()
         getDataSmallDetailStyle()
         getDataBoxStyle()
+        setupViews()
     }
 
     private fun setupViews() = with(binding) {
         nextSmallDetailStyleImageView.setOnClickListener {
-
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToAppListFragment()
+            )
+        }
+        nextBoxStyleImageView.setOnClickListener {
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToAppListFragment()
+            )
         }
     }
 

@@ -6,24 +6,18 @@
     app:startDestination="@id/appHomeFragment">
     <fragment
         android:id="@+id/appHomeFragment"
-        android:name="com.samadihadis.androidappstore.peresentaion.apps.AppListFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.apps.AppHomeFragment"
         android:label="Apps"
         tools:layout="@layout/fragment_app_home">
         <action
             android:id="@+id/action_to_appListFragment"
-            app:destination="@+id/appListFragment"
-            app:popUpTo="@id/appHomeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@+id/appListFragment" />
     </fragment>
     <fragment
         android:id="@+id/appListFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.list.AppListFragment"
         android:label="AppList"
-        tools:layout="@layout/fragment_app_list">
-        <argument
-            android:name="appInfoModel"
-            app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
-    </fragment>
+        tools:layout="@layout/fragment_app_list"/>
 
     <fragment
         android:id="@+id/gameHomeFragment"
