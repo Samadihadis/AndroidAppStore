@@ -28,7 +28,11 @@
         android:id="@+id/gameHomeFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.games.GameHomeFragment"
         android:label="Games"
-        tools:layout="@layout/fragment_game_home" />
+        tools:layout="@layout/fragment_game_home">
+        <action
+            android:id="@+id/action_to_appListFragment"
+            app:destination="@+id/appListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.account.AccountFragment"

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.samadihadis.androidappstore.data.AppInfoModel
@@ -56,6 +57,21 @@ class GameHomeFragment : Fragment() {
         getDataBannerStyle()
         getDataMediumDetailStyle()
         getDataBoxStyle()
+        setupViews()
+    }
+
+
+    private fun setupViews() = with(binding) {
+        nextMediumDetailStyleImageView.setOnClickListener {
+            findNavController().navigate(
+                GameHomeFragmentDirections.actionToAppListFragment("GAME_ACTION")
+            )
+        }
+        nextBoxStyleImageView.setOnClickListener {
+            findNavController().navigate(
+                GameHomeFragmentDirections.actionToAppListFragment("GAME_CASUAL")
+            )
+        }
     }
 
     private fun startLoadingState() = with(binding) {
