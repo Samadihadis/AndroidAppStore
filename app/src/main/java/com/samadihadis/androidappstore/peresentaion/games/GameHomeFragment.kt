@@ -15,6 +15,8 @@ import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBann
 import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.mediumDetailStyle.AppMediumDetailStyleAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
+import com.samadihadis.androidappstore.util.gone
+import com.samadihadis.androidappstore.util.visible
 import retrofit2.Call
 import retrofit2.Response
 
@@ -49,11 +51,34 @@ class GameHomeFragment : Fragment() {
         setupMediumDetailStyleAdapter()
         setupBoxStyleAdapter()
 
+        startLoadingState()
+
         getDataBannerStyle()
         getDataMediumDetailStyle()
         getDataBoxStyle()
     }
 
+    private fun startLoadingState() = with(binding) {
+        shimmerFrameLayout.visible()
+        shimmerFrameLayout.startShimmer()
+
+        mediumDetailStyleTitleTextView.gone()
+        nextMediumDetailStyleImageView.gone()
+
+        boxStyleTitleTextView.gone()
+        nextBoxStyleImageView.gone()
+    }
+
+    private fun stopLoadingState() = with(binding) {
+        shimmerFrameLayout.stopShimmer()
+        shimmerFrameLayout.gone()
+
+        mediumDetailStyleTitleTextView.visible()
+        nextMediumDetailStyleImageView.visible()
+
+        boxStyleTitleTextView.visible()
+        nextBoxStyleImageView.visible()
+    }
     private fun setupBannerStyleAdapter() {
         with(binding.bannerStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
@@ -141,6 +166,7 @@ class GameHomeFragment : Fragment() {
 
     private fun onServerResponseMediumDetailStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
+            stopLoadingState()
             if (!response.body()?.appList.isNullOrEmpty()) {
                 appMediumDetailStyleInfoList = response.body()?.appList!!
                 appMediumDetailStyleAdaptor.addItemList(appMediumDetailStyleInfoList)
@@ -179,6 +205,7 @@ class GameHomeFragment : Fragment() {
 
     private fun onServerResponseBoxStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
+            stopLoadingState()
             if (!response.body()?.appList.isNullOrEmpty()) {
                 appBoxStyleInfoList = response.body()?.appList!!
                 appBoxStyleAdapter.addItemList(appBoxStyleInfoList)

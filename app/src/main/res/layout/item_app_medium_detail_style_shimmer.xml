@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootItemMediumDetailStyleLayout"
-    android:background="?attr/selectableItemBackground"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/mediumDetailStyleImageView"
         android:layout_width="210dp"
         android:layout_height="110dp"
-        android:src="@drawable/baseline_apps_24"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/shimmer"
+        app:layout_constraintBottom_toTopOf="@+id/mediumDetailStyleTitleTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/mediumDetailStyleTitleTextView"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mediumDetailStyleTitleTextView"
@@ -25,14 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="10dp"
+        android:background="@color/shimmer"
         android:maxLength="20"
         android:textColor="#121212"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/mediumDetailStyleImageView"
         app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleImageView"
         app:layout_constraintTop_toBottomOf="@+id/mediumDetailStyleImageView"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Title" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mediumDetailStyleCategoryTextView"
@@ -40,26 +39,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
+        android:background="@color/shimmer"
         android:maxLength="20"
         android:textColor="#121212"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleTitleTextView"
-        app:layout_constraintTop_toBottomOf="@+id/mediumDetailStyleTitleTextView"
-        tools:text="Category" />
+        app:layout_constraintTop_toBottomOf="@+id/mediumDetailStyleTitleTextView" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mediumDetailStyleRatingTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/shimmer"
         android:textColor="#121212"
         android:textSize="12sp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginVertical="4dp"
-        app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleCategoryTextView"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mediumDetailStyleCategoryTextView"
-        tools:text="Rating" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleCategoryTextView"
+        app:layout_constraintTop_toBottomOf="@id/mediumDetailStyleCategoryTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
