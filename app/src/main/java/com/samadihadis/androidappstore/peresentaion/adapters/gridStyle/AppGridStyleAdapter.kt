@@ -8,7 +8,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
-import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleViewHolder
 import com.samadihadis.androidappstore.util.formatNumber
 
 
@@ -19,7 +18,7 @@ class AppGridStyleAdapter : RecyclerView.Adapter<AppGridStyleViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppGridStyleViewHolder {
         val view =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_apps_grid_style, parent, false)
+                .inflate(R.layout.item_app_grid_style, parent, false)
         return AppGridStyleViewHolder(view)
     }
 

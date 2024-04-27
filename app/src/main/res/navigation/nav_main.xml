@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/gameHomeFragment"
-        android:name="com.samadihadis.androidappstore.peresentaion.games.GamesFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.games.GameHomeFragment"
         android:label="Games"
         tools:layout="@layout/fragment_game_home" />
     <fragment

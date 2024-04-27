@@ -16,7 +16,7 @@ class AppBoxStyleAdapter : RecyclerView.Adapter<AppBoxStyleViewHolder>() {
     private var appList: MutableList<AppInfoModel> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppBoxStyleViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_apps_box_style, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_app_box_style, parent, false)
         return AppBoxStyleViewHolder(view)
     }
 

@@ -16,7 +16,7 @@ class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewH
     private var appList: MutableList<AppInfoModel> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppSmallDetailStyleViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_apps_small_detail_style, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_app_small_detail_style, parent, false)
         return AppSmallDetailStyleViewHolder(view)
     }
 

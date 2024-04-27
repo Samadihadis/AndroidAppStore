@@ -107,11 +107,11 @@
 
                 <include layout="@layout/item_app_title_recycler_shimmer" />
 
-                <include layout="@layout/item_apps_small_detail_style_shimmer" />
+                <include layout="@layout/item_app_small_detail_style_shimmer" />
 
                 <include layout="@layout/item_app_title_recycler_shimmer" />
 
-                <include layout="@layout/item_apps_box_style_shimmer" />
+                <include layout="@layout/item_app_box_style_shimmer" />
 
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
