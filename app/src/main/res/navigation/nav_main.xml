@@ -13,11 +13,16 @@
             android:id="@+id/action_to_appListFragment"
             app:destination="@+id/appListFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/appListFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.list.AppListFragment"
         android:label="AppList"
-        tools:layout="@layout/fragment_app_list"/>
+        tools:layout="@layout/fragment_app_list">
+        <argument
+            android:name="catKey"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/gameHomeFragment"
@@ -29,6 +34,5 @@
         android:name="com.samadihadis.androidappstore.peresentaion.account.AccountFragment"
         android:label="Account"
         tools:layout="@layout/fragment_account" />
-
 
 </navigation>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.data.AppListResponseModel
@@ -18,6 +19,7 @@ import retrofit2.Response
 class AppListFragment : Fragment() {
 
     private lateinit var binding: FragmentAppListBinding
+    private val args by navArgs<AppListFragmentArgs>()
     private var appGridStyleInfoList = listOf<AppInfoModel>()
     private val appGridStyleAdapter by lazy {
         AppGridStyleAdapter()
@@ -46,7 +48,7 @@ class AppListFragment : Fragment() {
     private fun getDataGridStyle() {
         RetrofitClient.apiService.topGoogleAppCharts(
             listName = "topselling_free",
-            catKey = "SPORTS",
+            catKey = args.catKey,
             country = "US",
             limit = "10",
             accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"

@@ -64,12 +64,12 @@ class AppHomeFragment : Fragment() {
     private fun setupViews() = with(binding) {
         nextSmallDetailStyleImageView.setOnClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToAppListFragment()
+                AppHomeFragmentDirections.actionToAppListFragment("BUSINESS")
             )
         }
         nextBoxStyleImageView.setOnClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToAppListFragment()
+                AppHomeFragmentDirections.actionToAppListFragment("SPORTS")
             )
         }
     }
