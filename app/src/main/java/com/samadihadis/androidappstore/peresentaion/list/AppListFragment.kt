@@ -51,7 +51,7 @@ class AppListFragment : Fragment() {
             catKey = args.catKey,
             country = "US",
             limit = "10",
-            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
+            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,

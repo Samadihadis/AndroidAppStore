@@ -16,6 +16,7 @@ import com.samadihadis.androidappstore.peresentaion.adapters.smallDetailStyle.Ap
 import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBannerStyleAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
+import com.samadihadis.androidappstore.util.Utils
 import com.samadihadis.androidappstore.util.gone
 import com.samadihadis.androidappstore.util.visible
 import retrofit2.Call
@@ -101,6 +102,9 @@ class AppHomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appBannerStyleAdaptor
         }
+        appBannerStyleAdaptor.onInstallButtonClickListener {
+            Utils.openMarket(requireContext() , it)
+        }
     }
 
     private fun setupSmallDetailStyleAdapter() {
@@ -123,7 +127,7 @@ class AppHomeFragment : Fragment() {
             catKey = "APPLICATION",
             country = "US",
             limit = "10",
-            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
+            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -164,7 +168,7 @@ class AppHomeFragment : Fragment() {
             catKey = "BUSINESS",
             country = "US",
             limit = "10",
-            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
+            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
@@ -203,7 +207,7 @@ class AppHomeFragment : Fragment() {
             catKey = "SPORTS",
             country = "US",
             limit = "10",
-            accessToken = "3274a444a8462f7e43e2b00a0097e4d6c7bdc187"
+            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
         ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
             override fun onResponse(
                 call: Call<AppListResponseModel>,
