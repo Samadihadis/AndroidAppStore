@@ -12,7 +12,7 @@ class AppMediumDetailStyleViewHolder(view: View) : RecyclerView.ViewHolder(view)
     val rootLayout: ConstraintLayout
     val iconImageView: AppCompatImageView
     val titleTextView: MaterialTextView
-    val categoryTextView: MaterialTextView
+    val downloadsTextView: MaterialTextView
     val ratingTextView: MaterialTextView
 
     init {
@@ -20,7 +20,7 @@ class AppMediumDetailStyleViewHolder(view: View) : RecyclerView.ViewHolder(view)
             rootLayout = findViewById(R.id.rootItemMediumDetailStyleLayout)
             iconImageView = findViewById(R.id.mediumDetailStyleImageView)
             titleTextView = findViewById(R.id.mediumDetailStyleTitleTextView)
-            categoryTextView = findViewById(R.id.mediumDetailStyleCategoryTextView)
+            downloadsTextView = findViewById(R.id.detailPageDownloadTitleTextView)
             ratingTextView = findViewById(R.id.mediumDetailStyleRatingTextView)
         }
     }

@@ -34,7 +34,7 @@ class AppMediumDetailStyleAdapter : RecyclerView.Adapter<AppMediumDetailStyleVie
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
             ratingTextView.text = rating.formatNumber() + " " + "★"
-            categoryTextView.text = appList[position].category
+            downloadsTextView.text = appList[position].downloads
             Glide.with(rootLayout.context)
                 .load(appList[position].featuredGraphic)
                 .placeholder(R.drawable.banner_image_placeholder)
