@@ -58,10 +58,4 @@ class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
     fun onInstallButtonClickListener(listener: ((String) -> Unit)) {
         onInstallClicked = listener
     }
-
-    fun onItemRootClickListener() {
-
-    }
-
-
 }
