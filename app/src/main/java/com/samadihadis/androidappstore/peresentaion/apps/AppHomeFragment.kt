@@ -9,13 +9,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.data.AppListResponseModel
 import com.samadihadis.androidappstore.databinding.FragmentAppHomeBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.smallDetailStyle.AppSmallDetailStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBannerStyleAdapter
+import com.samadihadis.androidappstore.util.Constant.KAT_KEY_APPLICATION
+import com.samadihadis.androidappstore.util.Constant.KAT_KEY_BUSINESS
+import com.samadihadis.androidappstore.util.Constant.KAT_KEY_SPORTS
 import com.samadihadis.androidappstore.util.RetrofitClient
+import com.samadihadis.androidappstore.util.SharePreferencesManager
 import com.samadihadis.androidappstore.util.Utils
 import com.samadihadis.androidappstore.util.gone
 import com.samadihadis.androidappstore.util.visible
@@ -28,6 +33,11 @@ class AppHomeFragment : Fragment() {
     private var appBannerStyleInfoList = listOf<AppInfoModel>()
     private var appSmallDetailStyleInfoList = listOf<AppInfoModel>()
     private var appBoxStyleInfoList = listOf<AppInfoModel>()
+
+
+    private val storage by lazy {
+        SharePreferencesManager(requireContext())
+    }
 
     private val appBannerStyleAdaptor by lazy {
         AppBannerStyleAdapter()
@@ -65,12 +75,12 @@ class AppHomeFragment : Fragment() {
     private fun setupViews() = with(binding) {
         nextSmallDetailStyleImageView.setOnClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToAppListFragment("BUSINESS")
+                AppHomeFragmentDirections.actionToAppListFragment(KAT_KEY_BUSINESS)
             )
         }
         nextBoxStyleImageView.setOnClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToAppListFragment("SPORTS")
+                AppHomeFragmentDirections.actionToAppListFragment(KAT_KEY_SPORTS)
             )
         }
     }
@@ -103,7 +113,7 @@ class AppHomeFragment : Fragment() {
             adapter = appBannerStyleAdaptor
         }
         appBannerStyleAdaptor.onInstallButtonClickListener {
-            Utils.openMarket(requireContext() , it)
+            Utils.openMarket(requireContext(), it)
         }
     }
 
@@ -122,35 +132,52 @@ class AppHomeFragment : Fragment() {
     }
 
     private fun getDataBannerStyle() {
-        RetrofitClient.apiService.topGoogleAppCharts(
-            listName = "topselling_free",
-            catKey = "APPLICATION",
-            country = "US",
-            limit = "10",
-            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
-        ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
-            override fun onResponse(
-                call: Call<AppListResponseModel>,
-                response: Response<AppListResponseModel>
-            ) {
-                onServerResponseBannerStyle(response)
-            }
+        val applicationCatKeyResponseJsonFormatString = storage.retrieveString(KAT_KEY_APPLICATION)
+        if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
+            val appListResponseModel = Gson().fromJson(
+                applicationCatKeyResponseJsonFormatString,
+                AppListResponseModel::class.java
+            )
+            stopLoadingState()
+            appBannerStyleInfoList = appListResponseModel?.appList!!
+            appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
+        } else {
+            RetrofitClient.apiService.topGoogleAppCharts(
+                listName = "topselling_free",
+                catKey = KAT_KEY_APPLICATION,
+                country = "US",
+                limit = "10",
+                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+            ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
+                override fun onResponse(
+                    call: Call<AppListResponseModel>,
+                    response: Response<AppListResponseModel>
+                ) {
+                    onServerResponseBannerStyle(response)
+                }
 
-            override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
-                Toast.makeText(
-                    requireContext(),
-                    "${t.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+                override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
+                    Toast.makeText(
+                        requireContext(),
+                        "${t.localizedMessage}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
     }
 
     private fun onServerResponseBannerStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
+                val appListResponseModel: AppListResponseModel? = response.body()
+                val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
+                storage.saveString(
+                    KAT_KEY_APPLICATION,
+                    applicationCatKeyResponseJsonFormatString
+                )
                 stopLoadingState()
-                appBannerStyleInfoList = response.body()?.appList!!
+                appBannerStyleInfoList = appListResponseModel?.appList!!
                 appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
@@ -158,40 +185,54 @@ class AppHomeFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Got an error!", Toast.LENGTH_SHORT).show()
         }
-
-
     }
 
     private fun getDataSmallDetailStyle() {
-        RetrofitClient.apiService.topGoogleAppCharts(
-            listName = "topselling_free",
-            catKey = "BUSINESS",
-            country = "US",
-            limit = "10",
-            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
-        ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
-            override fun onResponse(
-                call: Call<AppListResponseModel>,
-                response: Response<AppListResponseModel>
-            ) {
-                onServerResponseSmallDetailStyle(response)
-            }
+        val applicationCatKeyResponseJsonFormatString = storage.retrieveString(KAT_KEY_BUSINESS)
+        if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
+            val appListResponseModel = Gson().fromJson(
+                applicationCatKeyResponseJsonFormatString,
+                AppListResponseModel::class.java
+            )
+            stopLoadingState()
+            appSmallDetailStyleInfoList = appListResponseModel?.appList!!
+            appSmallDetailStyleAdaptor.addItemList(appSmallDetailStyleInfoList)
+        } else {
+            RetrofitClient.apiService.topGoogleAppCharts(
+                listName = "topselling_free",
+                catKey = KAT_KEY_BUSINESS,
+                country = "US",
+                limit = "10",
+                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+            ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
+                override fun onResponse(
+                    call: Call<AppListResponseModel>,
+                    response: Response<AppListResponseModel>
+                ) {
+                    onServerResponseSmallDetailStyle(response)
+                }
 
-            override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
-                Toast.makeText(
-                    requireContext(),
-                    "${t.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+                override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
+                    Toast.makeText(
+                        requireContext(),
+                        "${t.localizedMessage}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
     }
 
     private fun onServerResponseSmallDetailStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
+
+                val appListResponseModel: AppListResponseModel? = response.body()
+                val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
+                storage.saveString(KAT_KEY_BUSINESS, applicationCatKeyResponseJsonFormatString)
+
                 stopLoadingState()
-                appSmallDetailStyleInfoList = response.body()?.appList!!
+                appSmallDetailStyleInfoList = appListResponseModel?.appList!!
                 appSmallDetailStyleAdaptor.addItemList(appSmallDetailStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
@@ -202,36 +243,52 @@ class AppHomeFragment : Fragment() {
     }
 
     private fun getDataBoxStyle() {
-        RetrofitClient.apiService.topGoogleAppCharts(
-            listName = "topselling_free",
-            catKey = "SPORTS",
-            country = "US",
-            limit = "10",
-            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
-        ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
-            override fun onResponse(
-                call: Call<AppListResponseModel>,
-                response: Response<AppListResponseModel>
-            ) {
-                onServerResponseBoxStyle(response)
-            }
+        val applicationCatKeyResponseJsonFormatString = storage.retrieveString(KAT_KEY_SPORTS)
+        if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
+            val appListResponseModel = Gson().fromJson(
+                applicationCatKeyResponseJsonFormatString,
+                AppListResponseModel::class.java
+            )
+            stopLoadingState()
+            appBoxStyleInfoList = appListResponseModel?.appList!!
+            appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
+        } else {
+            RetrofitClient.apiService.topGoogleAppCharts(
+                listName = "topselling_free",
+                catKey = KAT_KEY_SPORTS,
+                country = "US",
+                limit = "10",
+                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+            ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
+                override fun onResponse(
+                    call: Call<AppListResponseModel>,
+                    response: Response<AppListResponseModel>
+                ) {
+                    onServerResponseBoxStyle(response)
+                }
 
-            override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
-                Toast.makeText(
-                    requireContext(),
-                    "${t.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+                override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
+                    Toast.makeText(
+                        requireContext(),
+                        "${t.localizedMessage}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
     }
 
     private fun onServerResponseBoxStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
+
+                val appListResponseModel: AppListResponseModel? = response.body()
+                val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
+                storage.saveString(KAT_KEY_SPORTS, applicationCatKeyResponseJsonFormatString)
+
                 stopLoadingState()
-                appBoxStyleInfoList = response.body()?.appList!!
-                appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
+                appBoxStyleInfoList = appListResponseModel?.appList!!
+                appBannerStyleAdaptor.addItemList(appBoxStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
             }
@@ -240,3 +297,4 @@ class AppHomeFragment : Fragment() {
         }
     }
 }
+
