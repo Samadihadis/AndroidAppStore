@@ -143,11 +143,7 @@ class GameHomeFragment : Fragment() {
             appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                listName = "topselling_free",
-                catKey = Constant.KAT_KEY_GAME_STRATEGY,
-                country = "US",
-                limit = "10",
-                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+                catKey = Constant.KAT_KEY_GAME_STRATEGY
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -202,11 +198,7 @@ class GameHomeFragment : Fragment() {
             appMediumDetailStyleAdaptor.addItemList(appMediumDetailStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                listName = "topselling_free",
-                catKey = Constant.KAT_KEY_GAME_ACTION,
-                country = "US",
-                limit = "10",
-                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+                catKey = Constant.KAT_KEY_GAME_ACTION
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -261,11 +253,7 @@ class GameHomeFragment : Fragment() {
             appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                listName = "topselling_free",
-                catKey = Constant.KAT_KEY_GAME_CASUAL,
-                country = "US",
-                limit = "10",
-                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+                catKey = Constant.KAT_KEY_GAME_CASUAL
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,

@@ -143,11 +143,7 @@ class AppHomeFragment : Fragment() {
             appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                listName = "topselling_free",
                 catKey = KAT_KEY_APPLICATION,
-                country = "US",
-                limit = "10",
-                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -199,11 +195,7 @@ class AppHomeFragment : Fragment() {
             appSmallDetailStyleAdaptor.addItemList(appSmallDetailStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                listName = "topselling_free",
-                catKey = KAT_KEY_BUSINESS,
-                country = "US",
-                limit = "10",
-                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+                catKey = KAT_KEY_BUSINESS
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -254,11 +246,7 @@ class AppHomeFragment : Fragment() {
             appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                listName = "topselling_free",
-                catKey = KAT_KEY_SPORTS,
-                country = "US",
-                limit = "10",
-                accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
+                catKey = KAT_KEY_SPORTS
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
