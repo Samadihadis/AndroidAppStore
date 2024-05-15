@@ -13,7 +13,7 @@ import com.samadihadis.androidappstore.util.formatNumber
 class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
 
     private var onInstallClicked: ((String) -> Unit)? = null
-
+    private var appItemClickListener : ((AppInfoModel) -> Unit)? = null
     private var appList: MutableList<AppInfoModel> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppBannerStyleViewHolder {
         val view =
@@ -47,7 +47,7 @@ class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
                 .transform(CenterCrop(), RoundedCorners(60))
                 .into(iconImageView)
             rootLayout.setOnClickListener {
-
+                appItemClickListener?.invoke(appList[position])
             }
             installButton.setOnClickListener{
                 onInstallClicked?.invoke(appList[position].packageName)

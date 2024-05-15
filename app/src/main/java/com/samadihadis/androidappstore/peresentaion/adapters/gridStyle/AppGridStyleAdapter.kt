@@ -14,6 +14,7 @@ import com.samadihadis.androidappstore.util.formatNumber
 class AppGridStyleAdapter : RecyclerView.Adapter<AppGridStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
+    private var appItemClickListener : ((AppInfoModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppGridStyleViewHolder {
         val view =
@@ -41,6 +42,10 @@ class AppGridStyleAdapter : RecyclerView.Adapter<AppGridStyleViewHolder>() {
                 .placeholder(R.drawable.banner_image_placeholder)
                 .transform(CenterCrop(), RoundedCorners(60))
                 .into(iconImageView)
+
+            rootLayout.setOnClickListener {
+                appItemClickListener?.invoke(appList[position])
+            }
         }
     }
 }

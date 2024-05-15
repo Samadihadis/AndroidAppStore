@@ -20,7 +20,7 @@ class AppMediumDetailStyleViewHolder(view: View) : RecyclerView.ViewHolder(view)
             rootLayout = findViewById(R.id.rootItemMediumDetailStyleLayout)
             iconImageView = findViewById(R.id.mediumDetailStyleImageView)
             titleTextView = findViewById(R.id.mediumDetailStyleTitleTextView)
-            downloadsTextView = findViewById(R.id.detailPageDownloadTitleTextView)
+            downloadsTextView = findViewById(R.id.mediumDetailStyleDownloadsTextView)
             ratingTextView = findViewById(R.id.mediumDetailStyleRatingTextView)
         }
     }

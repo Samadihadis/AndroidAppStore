@@ -14,6 +14,8 @@ import com.samadihadis.androidappstore.util.formatNumber
 class AppBoxStyleAdapter : RecyclerView.Adapter<AppBoxStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
+    private var appItemClickListener : ((AppInfoModel) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppBoxStyleViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_app_box_style, parent, false)
@@ -42,7 +44,7 @@ class AppBoxStyleAdapter : RecyclerView.Adapter<AppBoxStyleViewHolder>() {
                 .into(iconImageView)
 
             rootLayout.setOnClickListener {
-
+                appItemClickListener?.invoke(appList[position])
             }
         }
     }

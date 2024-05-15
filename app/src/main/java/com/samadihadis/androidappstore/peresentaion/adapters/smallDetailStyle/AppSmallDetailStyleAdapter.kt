@@ -14,6 +14,8 @@ import com.samadihadis.androidappstore.util.formatNumber
 class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewHolder>() {
 
     private var appList: MutableList<AppInfoModel> = mutableListOf()
+    private var appItemClickListener : ((AppInfoModel) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppSmallDetailStyleViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_app_small_detail_style, parent, false)
@@ -39,6 +41,9 @@ class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewH
                 .placeholder(R.drawable.banner_image_placeholder)
                 .transform(CenterCrop(), RoundedCorners(60))
                 .into(iconImageView)
+            rootLayout.setOnClickListener {
+                appItemClickListener?.invoke(appList[position])
+            }
         }
     }
 }
