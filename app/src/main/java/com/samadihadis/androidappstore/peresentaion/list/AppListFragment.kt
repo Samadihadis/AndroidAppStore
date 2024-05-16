@@ -8,11 +8,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import com.samadihadis.androidappstore.data.AppInfoModel
 import com.samadihadis.androidappstore.data.AppListResponseModel
 import com.samadihadis.androidappstore.databinding.FragmentAppListBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.gridStyle.AppGridStyleAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
+import com.samadihadis.androidappstore.util.SharePreferencesManager
 import retrofit2.Call
 import retrofit2.Response
 
@@ -23,6 +25,9 @@ class AppListFragment : Fragment() {
     private var appGridStyleInfoList = listOf<AppInfoModel>()
     private val appGridStyleAdapter by lazy {
         AppGridStyleAdapter()
+    }
+    private val storage by lazy {
+        SharePreferencesManager(requireContext())
     }
 
     override fun onCreateView(
@@ -46,34 +51,44 @@ class AppListFragment : Fragment() {
     }
 
     private fun getDataGridStyle() {
-        RetrofitClient.apiService.topGoogleAppCharts(
-            listName = "topselling_free",
-            catKey = args.catKey,
-            country = "US",
-            limit = "10",
-            accessToken = "920991e69f56a984fe4bc765f702482e4826020b"
-        ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
-            override fun onResponse(
-                call: Call<AppListResponseModel>,
-                response: Response<AppListResponseModel>
-            ) {
-                onServerResponseGridStyle(response)
-            }
+        val applicationCatKeyResponseJsonFormatString = storage.retrieveString(args.catKey)
+        if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
+            val appListResponseModel = Gson().fromJson(
+                applicationCatKeyResponseJsonFormatString,
+                AppListResponseModel::class.java
+            )
+            appGridStyleInfoList = appListResponseModel?.appList!!
+            appGridStyleAdapter.addItemList(appGridStyleInfoList)
+        } else {
+            RetrofitClient.apiService.topGoogleAppCharts(
+                catKey = args.catKey
+            ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
+                override fun onResponse(
+                    call: Call<AppListResponseModel>,
+                    response: Response<AppListResponseModel>
+                ) {
+                    onServerResponseGridStyle(response)
+                }
 
-            override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
-                Toast.makeText(
-                    requireContext(),
-                    "${t.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+                override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
+                    Toast.makeText(
+                        requireContext(),
+                        "${t.localizedMessage}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+        }
     }
 
     private fun onServerResponseGridStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
-                appGridStyleInfoList = response.body()?.appList!!
+
+                val appListResponseModel: AppListResponseModel? = response.body()
+                val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
+                storage.saveString(args.catKey, applicationCatKeyResponseJsonFormatString)
+                appGridStyleInfoList = appListResponseModel?.appList!!
                 appGridStyleAdapter.addItemList(appGridStyleInfoList)
             } else {
                 Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
