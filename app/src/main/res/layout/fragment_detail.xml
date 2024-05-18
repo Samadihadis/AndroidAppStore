@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/detailPageIconImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/baseline_apps_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="Title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailPageIconImageView"
+            app:layout_constraintTop_toTopOf="@id/detailPageIconImageView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageTypeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:text="Type"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/detailPageIconImageView"
+            app:layout_constraintTop_toBottomOf="@id/detailPageTitleTextView" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/detailPageHorizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageIconImageView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailPageRatingOneTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Ratin"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailPageReviewsTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Reviews"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detailPageRatingOneTextView" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/detailPageSizeImageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/download_icon"
+                    app:layout_constraintEnd_toEndOf="@id/detailPageSizeTextView"
+                    app:layout_constraintStart_toStartOf="@id/detailPageSizeTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailPageSizeTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:text="Size"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/detailPageReviewsTextView"
+                    app:layout_constraintTop_toTopOf="@id/detailPageReviewsTextView" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailPageDownloadTitleTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Download"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@id/detailPageDownloadValueTextView"
+                    app:layout_constraintStart_toStartOf="@id/detailPageDownloadValueTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailPageDownloadValueTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:text="Download"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/detailPageSizeTextView"
+                    app:layout_constraintTop_toTopOf="@id/detailPageSizeTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/detailPageInstallButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/blue"
+            android:text="Install"
+            app:cornerRadius="15dp"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageHorizontalScrollView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/detailPageScreenshotsRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageInstallButton" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageAboutTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="About this game"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageScreenshotsRecycleView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/detailPageAboutNextImageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/next"
+            android:tint="#595757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailPageAboutTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageAboutValueTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageAboutTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageDataSafetyTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Data safety"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageAboutValueTextView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/detailPageSafetyNextImageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/next"
+            android:tint="#595757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailPageDataSafetyTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageSafetyValueTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:lines="7"
+            android:text="Safety ..."
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageDataSafetyTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageRatingsAndReviewsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Ratings and reviews"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageSafetyValueTextView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/detailPageRatingsAndReviewsNextImageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/next"
+            android:tint="#595757"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailPageRatingsAndReviewsTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageRatingsAndReviewsDescriptionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:lines="2"
+            android:text="Ratings and reviews are verified and are from pepole who use the same type of device that you use"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageRatingsAndReviewsTitleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageRatingTwoTextView"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Rating"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailPageRatingsAndReviewsDescriptionTextView" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/detailPageRatingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:rating="5"
+            android:stepSize="1"
+            app:layout_constraintStart_toStartOf="@+id/detailPageRatingTwoTextView"
+            app:layout_constraintTop_toBottomOf="@id/detailPageRatingTwoTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detailPageNumberOfRatingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Number"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/detailPageRatingBar"
+            app:layout_constraintTop_toBottomOf="@+id/detailPageRatingBar" />
+
+        <ProgressBar
+            android:id="@+id/progressBarOne"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:scrollbarSize="32sp"
+            app:layout_constraintStart_toEndOf="@id/detailPageRatingTwoTextView"
+            app:layout_constraintTop_toTopOf="@id/detailPageRatingTwoTextView" />
+
+        <ProgressBar
+            android:id="@+id/progressBarTwo"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="@+id/progressBarOne"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarOne" />
+
+        <ProgressBar
+            android:id="@+id/progressBarThree"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="@+id/progressBarTwo"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarTwo" />
+
+        <ProgressBar
+            android:id="@+id/progressBarFour"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="@+id/progressBarThree"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarThree" />
+
+        <ProgressBar
+            android:id="@+id/progressBarFive"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detailPageNumberOfRatingTextView"
+            app:layout_constraintStart_toStartOf="@+id/progressBarFour"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarFour" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

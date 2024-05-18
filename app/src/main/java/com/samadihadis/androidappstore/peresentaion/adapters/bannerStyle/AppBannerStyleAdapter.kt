@@ -13,8 +13,8 @@ import com.samadihadis.androidappstore.util.formatNumber
 class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
 
     private var onInstallClicked: ((String) -> Unit)? = null
-    private var appItemClickListener : ((AppInfoModel) -> Unit)? = null
     private var appList: MutableList<AppInfoModel> = mutableListOf()
+    private var appItemClickListener : ((AppInfoModel) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppBannerStyleViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_app_banner_style, parent, false)
