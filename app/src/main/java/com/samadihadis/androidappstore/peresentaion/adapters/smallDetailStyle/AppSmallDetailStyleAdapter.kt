@@ -46,4 +46,7 @@ class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewH
             }
         }
     }
+    fun onItemSmallStyleClickListener(listener: ((AppInfoModel) -> Unit)) {
+        appItemClickListener = listener
+    }
 }

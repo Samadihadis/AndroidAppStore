@@ -51,4 +51,7 @@ class AppMediumDetailStyleAdapter : RecyclerView.Adapter<AppMediumDetailStyleVie
             }
         }
     }
+    fun onItemMediumStyleClickListener(listener: ((AppInfoModel) -> Unit)) {
+        appItemClickListener = listener
+    }
 }

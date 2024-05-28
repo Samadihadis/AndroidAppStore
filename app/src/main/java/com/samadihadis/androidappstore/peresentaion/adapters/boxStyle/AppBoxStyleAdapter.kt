@@ -48,4 +48,8 @@ class AppBoxStyleAdapter : RecyclerView.Adapter<AppBoxStyleViewHolder>() {
             }
         }
     }
+
+    fun onItemBoxStyleClickListener(listener: ((AppInfoModel) -> Unit)) {
+        appItemClickListener = listener
+    }
 }

@@ -48,4 +48,7 @@ class AppGridStyleAdapter : RecyclerView.Adapter<AppGridStyleViewHolder>() {
             }
         }
     }
+    fun onItemGridStyleClickListener(listener: ((AppInfoModel) -> Unit)) {
+        appItemClickListener = listener
+    }
 }
