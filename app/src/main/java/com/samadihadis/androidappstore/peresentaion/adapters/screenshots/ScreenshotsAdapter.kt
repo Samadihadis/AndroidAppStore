@@ -39,6 +39,7 @@ class ScreenshotsAdapter : RecyclerView.Adapter<ScreenshotsViewHolder>() {
                 .load(appList[position].screenshots)
                 .placeholder(R.drawable.banner_image_placeholder)
                 .transform(CenterCrop(), RoundedCorners(60))
-                .into(iconImageView)        }
+                .into(iconImageView)
+        }
     }
 }

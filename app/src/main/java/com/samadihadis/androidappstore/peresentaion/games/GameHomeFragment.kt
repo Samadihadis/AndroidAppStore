@@ -113,7 +113,7 @@ class GameHomeFragment : Fragment() {
         }
         appBannerStyleAdaptor.onItemBannerStyleClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToDetailFragment(it)
+                GameHomeFragmentDirections.actionToDetailFragment(it)
             )
         }
     }
@@ -125,7 +125,7 @@ class GameHomeFragment : Fragment() {
         }
         appMediumDetailStyleAdaptor.onItemMediumStyleClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToDetailFragment(it)
+                GameHomeFragmentDirections.actionToDetailFragment(it)
             )
         }
     }
@@ -137,7 +137,7 @@ class GameHomeFragment : Fragment() {
         }
         appBoxStyleAdapter.onItemBoxStyleClickListener {
             findNavController().navigate(
-                AppHomeFragmentDirections.actionToDetailFragment(it)
+                GameHomeFragmentDirections.actionToDetailFragment(it)
             )
         }
     }
