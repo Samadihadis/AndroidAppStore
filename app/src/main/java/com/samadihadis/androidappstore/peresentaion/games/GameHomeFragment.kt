@@ -16,6 +16,7 @@ import com.samadihadis.androidappstore.databinding.FragmentGameHomeBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBannerStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.mediumDetailStyle.AppMediumDetailStyleAdapter
+import com.samadihadis.androidappstore.peresentaion.apps.AppHomeFragmentDirections
 import com.samadihadis.androidappstore.util.Constant
 import com.samadihadis.androidappstore.util.RetrofitClient
 import com.samadihadis.androidappstore.util.SharePreferencesManager
@@ -110,16 +111,22 @@ class GameHomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appBannerStyleAdaptor
         }
+        appBannerStyleAdaptor.onItemBannerStyleClickListener {
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToDetailFragment(it)
+            )
+        }
     }
 
     private fun setupMediumDetailStyleAdapter() {
         with(binding.mediumDetailStyleRecyclerView) {
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                androidx.recyclerview.widget.RecyclerView.HORIZONTAL,
-                false
-            )
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appMediumDetailStyleAdaptor
+        }
+        appMediumDetailStyleAdaptor.onItemMediumStyleClickListener {
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToDetailFragment(it)
+            )
         }
     }
 
@@ -127,6 +134,11 @@ class GameHomeFragment : Fragment() {
         with(binding.boxStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appBoxStyleAdapter
+        }
+        appBoxStyleAdapter.onItemBoxStyleClickListener {
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToDetailFragment(it)
+            )
         }
     }
 

@@ -115,6 +115,11 @@ class AppHomeFragment : Fragment() {
         appBannerStyleAdaptor.onInstallButtonClickListener {
             Utils.openMarket(requireContext(), it)
         }
+        appBannerStyleAdaptor.onItemBannerStyleClickListener {
+           findNavController().navigate(
+               AppHomeFragmentDirections.actionToDetailFragment(it)
+           )
+        }
     }
 
     private fun setupSmallDetailStyleAdapter() {
@@ -122,12 +127,22 @@ class AppHomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appSmallDetailStyleAdaptor
         }
+        appSmallDetailStyleAdaptor.onItemSmallStyleClickListener {
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToDetailFragment(it)
+            )
+        }
     }
 
     private fun setupBoxStyleAdapter() {
         with(binding.boxStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appBoxStyleAdapter
+        }
+        appBoxStyleAdapter.onItemBoxStyleClickListener {
+            findNavController().navigate(
+                AppHomeFragmentDirections.actionToDetailFragment(it)
+            )
         }
     }
 
