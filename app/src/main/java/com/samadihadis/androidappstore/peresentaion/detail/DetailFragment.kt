@@ -64,11 +64,24 @@ class DetailFragment: Fragment() {
             detailPageAboutValueTextView.text = args.appInfoModel.description
             detailPageRatingTwoTextView.text = args.appInfoModel.rating.formatNumber() + " "
             detailPageRatingBar.rating
-            progressBarOne.progress = args.appInfoModel.ratings1.toInt()
-            progressBarTwo.progress = args.appInfoModel.ratings2.toInt()
-            progressBarThree.progress = args.appInfoModel.ratings3.toInt()
-            progressBarFour.progress = args.appInfoModel.ratings4.toInt()
-            progressBarFive.progress = args.appInfoModel.ratings5.toInt()
+
+            val totalRating = args.appInfoModel.numberRatings.toDouble()
+
+            val progressOnePercent = ((args.appInfoModel.ratings1.toDouble() / totalRating) * 100).toInt()
+            progressBarOne.progress = progressOnePercent
+
+            val progressTwoPercent = ((args.appInfoModel.ratings2.toDouble() / totalRating) * 100).toInt()
+            progressBarTwo.progress = progressTwoPercent
+
+            val progressThreePercent = ((args.appInfoModel.ratings3.toDouble() / totalRating) * 100).toInt()
+            progressBarThree.progress = progressThreePercent
+
+            val progressFourPercent = ((args.appInfoModel.ratings4.toDouble() / totalRating) * 100).toInt()
+            progressBarFour.progress = progressFourPercent
+
+            val progressFivePercent = ((args.appInfoModel.ratings5.toDouble() / totalRating) * 100).toInt()
+            progressBarFive.progress = progressFivePercent
+
             detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings.toString()
         }
     }
