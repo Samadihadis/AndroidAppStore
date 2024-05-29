@@ -56,31 +56,33 @@ class DetailFragment: Fragment() {
             detailPageTitleTextView.text = args.appInfoModel.title
             detailPageTypeTextView.text = args.appInfoModel.category
             detailPageReviewsTextView.text = args.appInfoModel.rating.formatNumber() + " "
-            detailPageSizeTextView.text = (args.appInfoModel.size/10000).toString()+ " " + "M"
+            detailPageSizeTextView.text = (args.appInfoModel.size/10000).toString()+ " " + "MB"
             detailPageDownloadValueTextView.text = args.appInfoModel.downloads
             detailPageInstallButton.setOnClickListener{
                 onInstallClicked?.invoke(args.appInfoModel.packageName)
             }
             detailPageAboutValueTextView.text = args.appInfoModel.description
             detailPageRatingTwoTextView.text = args.appInfoModel.rating.formatNumber() + " "
-            detailPageRatingBar.rating
+
+            detailPageRatingBar.rating = args.appInfoModel.rating
+
 
             val totalRating = args.appInfoModel.numberRatings.toDouble()
 
-            val progressOnePercent = ((args.appInfoModel.ratings1.toDouble() / totalRating) * 100).toInt()
-            progressBarOne.progress = progressOnePercent
+            val progressFivePercent = ((args.appInfoModel.ratings1.toDouble() / totalRating) * 100).toInt()
+            progressBarFive.progress = progressFivePercent
 
-            val progressTwoPercent = ((args.appInfoModel.ratings2.toDouble() / totalRating) * 100).toInt()
-            progressBarTwo.progress = progressTwoPercent
+            val progressFourPercent = ((args.appInfoModel.ratings2.toDouble() / totalRating) * 100).toInt()
+            progressBarFour.progress = progressFourPercent
 
             val progressThreePercent = ((args.appInfoModel.ratings3.toDouble() / totalRating) * 100).toInt()
             progressBarThree.progress = progressThreePercent
 
-            val progressFourPercent = ((args.appInfoModel.ratings4.toDouble() / totalRating) * 100).toInt()
-            progressBarFour.progress = progressFourPercent
+            val progressTwoPercent = ((args.appInfoModel.ratings4.toDouble() / totalRating) * 100).toInt()
+            progressBarTow.progress = progressTwoPercent
 
-            val progressFivePercent = ((args.appInfoModel.ratings5.toDouble() / totalRating) * 100).toInt()
-            progressBarFive.progress = progressFivePercent
+            val progressOnePercent = ((args.appInfoModel.ratings5.toDouble() / totalRating) * 100).toInt()
+            progressBarOne.progress = progressOnePercent
 
             detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings.toString()
         }

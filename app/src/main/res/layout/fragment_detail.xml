@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -136,8 +136,8 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/blue"
             android:text="Install"
-            app:cornerRadius="15dp"
             android:textAllCaps="false"
+            app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailPageHorizontalScrollView" />
@@ -179,10 +179,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Sample App/Game Description"
-            android:textSize="16sp"
             android:ellipsize="end"
             android:maxLines="5"
+            android:text="Sample App/Game Description"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailPageAboutTitleTextView" />
 
@@ -198,15 +198,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailPageAboutValueTextView" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/detailPageSafetyNextImageView"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/next"
-            android:tint="#595757"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/detailPageDataSafetyTitleTextView" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailPageSafetyValueTextView"
@@ -231,16 +222,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detailPageSafetyValueTextView" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/detailPageRatingsAndReviewsNextImageView"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/next"
-            android:tint="#595757"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/detailPageRatingsAndReviewsTitleTextView" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailPageRatingsAndReviewsDescriptionTextView"
@@ -274,10 +255,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:rating="5"
-            android:stepSize="1"
+            android:max="5"
+            android:progressTint="@color/blue"
+            android:stepSize="0.1"
             app:layout_constraintStart_toStartOf="@+id/detailPageRatingTwoTextView"
-            app:layout_constraintTop_toBottomOf="@id/detailPageRatingTwoTextView" />
+            app:layout_constraintTop_toBottomOf="@id/detailPageRatingTwoTextView"
+            tools:progress="3" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detailPageNumberOfRatingTextView"
@@ -292,67 +275,123 @@
             app:layout_constraintTop_toBottomOf="@+id/detailPageRatingBar" />
 
         <ProgressBar
-            android:id="@+id/progressBarOne"
+            android:id="@+id/progressBarFive"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:max="100"
+            android:progressTint="@color/blue"
+            android:scaleY="2"
             android:scrollbarSize="32sp"
-            android:max="100"
-            tools:progress="34"
-            android:scaleY="2"
-            android:progressTint="@color/blue"
-            app:layout_constraintStart_toEndOf="@id/detailPageRatingTwoTextView"
-            app:layout_constraintTop_toTopOf="@id/detailPageRatingTwoTextView" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailPageRatingTwoTextView"
+            tools:progress="34" />
 
-        <ProgressBar
-            android:id="@+id/progressBarTwo"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="250dp"
-            android:layout_height="20dp"
-            android:max="100"
-            tools:progress="34"
-            android:scaleY="2"
-            android:progressTint="@color/blue"
-            app:layout_constraintStart_toStartOf="@+id/progressBarOne"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarOne" />
-
-        <ProgressBar
-            android:id="@+id/progressBarThree"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="250dp"
-            android:layout_height="20dp"
-            android:max="100"
-            tools:progress="64"
-            android:scaleY="2"
-            android:progressTint="@color/blue"
-            app:layout_constraintStart_toStartOf="@+id/progressBarTwo"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarTwo" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateTextViewProgressBarFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:text="5"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarFive"
+            app:layout_constraintEnd_toStartOf="@id/progressBarFive"
+            app:layout_constraintTop_toTopOf="@id/progressBarFive" />
 
         <ProgressBar
             android:id="@+id/progressBarFour"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="20dp"
             android:max="100"
-            tools:progress="74"
-            android:scaleY="2"
             android:progressTint="@color/blue"
-            app:layout_constraintStart_toStartOf="@+id/progressBarThree"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarThree" />
+            android:scaleY="2"
+            app:layout_constraintStart_toStartOf="@+id/progressBarFive"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarFive"
+            tools:progress="34" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateTextViewProgressBarFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:text="4"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarFour"
+            app:layout_constraintEnd_toStartOf="@id/progressBarFour"
+            app:layout_constraintTop_toTopOf="@id/progressBarFour" />
 
         <ProgressBar
-            android:id="@+id/progressBarFive"
+            android:id="@+id/progressBarThree"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="250dp"
+            android:layout_width="220dp"
             android:layout_height="20dp"
             android:max="100"
-            tools:progress="94"
-            android:scaleY="2"
             android:progressTint="@color/blue"
-            app:layout_constraintBottom_toBottomOf="@+id/detailPageNumberOfRatingTextView"
+            android:scaleY="2"
             app:layout_constraintStart_toStartOf="@+id/progressBarFour"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarFour" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBarFour"
+            tools:progress="64" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateTextViewProgressBarThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:text="3"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarThree"
+            app:layout_constraintEnd_toStartOf="@id/progressBarThree"
+            app:layout_constraintTop_toTopOf="@id/progressBarThree" />
+
+        <ProgressBar
+            android:id="@+id/progressBarTow"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="220dp"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progressTint="@color/blue"
+            android:scaleY="2"
+            app:layout_constraintStart_toStartOf="@+id/progressBarThree"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarThree"
+            tools:progress="74" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateTextViewProgressBarTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:text="2"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarTow"
+            app:layout_constraintEnd_toStartOf="@id/progressBarTow"
+            app:layout_constraintTop_toTopOf="@id/progressBarTow" />
+
+        <ProgressBar
+            android:id="@+id/progressBarOne"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="220dp"
+            android:layout_height="20dp"
+            android:max="100"
+            android:progressTint="@color/blue"
+            android:scaleY="2"
+            app:layout_constraintBottom_toBottomOf="@+id/detailPageNumberOfRatingTextView"
+            app:layout_constraintStart_toStartOf="@+id/progressBarTow"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarTow"
+            tools:progress="94" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateTextViewProgressBarOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:text="1"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarOne"
+            app:layout_constraintEnd_toStartOf="@id/progressBarOne"
+            app:layout_constraintTop_toTopOf="@id/progressBarOne" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
