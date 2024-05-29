@@ -56,4 +56,14 @@
             app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
     </fragment>
 
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.detail.AboutAppFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_about_app">
+        <argument
+            android:name="appInfoModel"
+            app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
+    </fragment>
+
 </navigation>
