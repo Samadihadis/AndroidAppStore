@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -17,7 +18,9 @@ import com.samadihadis.androidappstore.databinding.FragmentDetailBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.screenshots.ScreenshotsAdapter
 import com.samadihadis.androidappstore.util.RetrofitClient
 import com.samadihadis.androidappstore.util.SharePreferencesManager
-import com.samadihadis.androidappstore.util.formatNumber
+import com.samadihadis.androidappstore.util.Utils
+import com.samadihadis.androidappstore.util.formatNumberDouble
+import com.samadihadis.androidappstore.util.formatNumberFloat
 import retrofit2.Call
 import retrofit2.Response
 
@@ -47,7 +50,9 @@ class DetailFragment: Fragment() {
 
         setupScreenshotsAdapter()
         getDataScreenshots()
-
+        onInstallButtonClickListener {
+            Utils.openMarket(requireContext(), it)
+        }
         binding.apply {
             Glide.with(requireContext())
                 .load(args.appInfoModel.icon72)
@@ -55,48 +60,64 @@ class DetailFragment: Fragment() {
                 .into(detailPageIconImageView)
             detailPageTitleTextView.text = args.appInfoModel.title
             detailPageTypeTextView.text = args.appInfoModel.category
-            detailPageReviewsTextView.text = args.appInfoModel.rating.formatNumber() + " "
-            detailPageSizeTextView.text = (args.appInfoModel.size/10000).toString()+ " " + "MB"
+            detailPageRatingOneTextView.text = args.appInfoModel.rating.formatNumberFloat() + " "+ "★"
+            detailPageReviewsTextView
+            detailPageSizeTextView.text =
+                (args.appInfoModel.size.toDouble() / 100000000).formatNumberDouble()+ " " + "MB"
             detailPageDownloadValueTextView.text = args.appInfoModel.downloads
-            detailPageInstallButton.setOnClickListener{
+            detailPageInstallButton.setOnClickListener {
                 onInstallClicked?.invoke(args.appInfoModel.packageName)
             }
             detailPageAboutValueTextView.text = args.appInfoModel.description
-            detailPageRatingTwoTextView.text = args.appInfoModel.rating.formatNumber() + " "
+            detailPageRatingTwoTextView.text = args.appInfoModel.rating.formatNumberFloat() + " "
 
             detailPageRatingBar.rating = args.appInfoModel.rating
 
 
             val totalRating = args.appInfoModel.numberRatings.toDouble()
 
-            val progressFivePercent = ((args.appInfoModel.ratings1.toDouble() / totalRating) * 100).toInt()
+            val progressFivePercent =
+                ((args.appInfoModel.ratings1.toDouble() / totalRating) * 100).toInt()
             progressBarFive.progress = progressFivePercent
 
-            val progressFourPercent = ((args.appInfoModel.ratings2.toDouble() / totalRating) * 100).toInt()
+            val progressFourPercent =
+                ((args.appInfoModel.ratings2.toDouble() / totalRating) * 100).toInt()
             progressBarFour.progress = progressFourPercent
 
-            val progressThreePercent = ((args.appInfoModel.ratings3.toDouble() / totalRating) * 100).toInt()
+            val progressThreePercent =
+                ((args.appInfoModel.ratings3.toDouble() / totalRating) * 100).toInt()
             progressBarThree.progress = progressThreePercent
 
-            val progressTwoPercent = ((args.appInfoModel.ratings4.toDouble() / totalRating) * 100).toInt()
+            val progressTwoPercent =
+                ((args.appInfoModel.ratings4.toDouble() / totalRating) * 100).toInt()
             progressBarTow.progress = progressTwoPercent
 
-            val progressOnePercent = ((args.appInfoModel.ratings5.toDouble() / totalRating) * 100).toInt()
+            val progressOnePercent =
+                ((args.appInfoModel.ratings5.toDouble() / totalRating) * 100).toInt()
             progressBarOne.progress = progressOnePercent
 
             detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings.toString()
+
+            detailPageAboutNextImageView.setOnClickListener {
+                findNavController().navigate(DetailFragmentDirections.actionToAboutAppFragment(args.appInfoModel))
+            }
         }
     }
 
     private fun setupScreenshotsAdapter() {
         with(binding.detailPageScreenshotsRecycleView) {
-            layoutManager = LinearLayoutManager(requireContext(), androidx.recyclerview.widget.RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                androidx.recyclerview.widget.RecyclerView.HORIZONTAL,
+                false
+            )
             adapter = screenshotsAdaptor
         }
     }
 
     private fun getDataScreenshots() {
-        val applicationCatKeyResponseJsonFormatString = storage.retrieveString(args.appInfoModel.catKey)
+        val applicationCatKeyResponseJsonFormatString =
+            storage.retrieveString(args.appInfoModel.catKey)
         if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
             val appListResponseModel = Gson().fromJson(
                 applicationCatKeyResponseJsonFormatString,
@@ -133,7 +154,10 @@ class DetailFragment: Fragment() {
 
                 val appListResponseModel: AppListResponseModel? = response.body()
                 val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
-                storage.saveString(args.appInfoModel.catKey, applicationCatKeyResponseJsonFormatString)
+                storage.saveString(
+                    args.appInfoModel.catKey,
+                    applicationCatKeyResponseJsonFormatString
+                )
                 screenshotsList = appListResponseModel?.appList!!
                 screenshotsAdaptor.addItemList(screenshotsList)
             } else {
@@ -142,6 +166,9 @@ class DetailFragment: Fragment() {
         } else {
             Toast.makeText(requireContext(), "Got an error!", Toast.LENGTH_SHORT).show()
         }
+    }
+    fun onInstallButtonClickListener(listener: ((String) -> Unit)) {
+        onInstallClicked = listener
     }
 
 }
