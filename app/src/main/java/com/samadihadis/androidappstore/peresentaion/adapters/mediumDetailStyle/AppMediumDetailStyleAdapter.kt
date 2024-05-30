@@ -8,7 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
-import com.samadihadis.androidappstore.util.formatNumber
+import com.samadihadis.androidappstore.util.formatNumberFloat
 
 
 class AppMediumDetailStyleAdapter : RecyclerView.Adapter<AppMediumDetailStyleViewHolder>() {
@@ -39,7 +39,7 @@ class AppMediumDetailStyleAdapter : RecyclerView.Adapter<AppMediumDetailStyleVie
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
-            ratingTextView.text = rating.formatNumber() + " " + "★"
+            ratingTextView.text = rating.formatNumberFloat() + " " + "★"
             downloadsTextView.text = appList[position].downloads
             Glide.with(rootLayout.context)
                 .load(appList[position].featuredGraphic)
