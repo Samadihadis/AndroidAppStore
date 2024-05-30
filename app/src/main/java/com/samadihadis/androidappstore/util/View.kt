@@ -2,6 +2,11 @@ package com.samadihadis.androidappstore.util
 
 import android.view.View
 import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.Locale
+
+
+
 
 fun Float.formatNumberFloat(): String {
     val num = DecimalFormat("##.#")
@@ -10,6 +15,11 @@ fun Float.formatNumberFloat(): String {
 
 fun Double.formatNumberDouble(): String {
     val num = DecimalFormat("##.##")
+    return num.format(this)
+}
+fun Int.separatorNumbers(): String {
+    val num = NumberFormat.getInstance(Locale.US) as DecimalFormat
+    num.applyPattern("#,###")
     return num.format(this)
 }
 

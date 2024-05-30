@@ -21,6 +21,7 @@ import com.samadihadis.androidappstore.util.SharePreferencesManager
 import com.samadihadis.androidappstore.util.Utils
 import com.samadihadis.androidappstore.util.formatNumberDouble
 import com.samadihadis.androidappstore.util.formatNumberFloat
+import com.samadihadis.androidappstore.util.separatorNumbers
 import retrofit2.Call
 import retrofit2.Response
 
@@ -61,7 +62,7 @@ class DetailFragment: Fragment() {
             detailPageTitleTextView.text = args.appInfoModel.title
             detailPageTypeTextView.text = args.appInfoModel.category
             detailPageRatingOneTextView.text = args.appInfoModel.rating.formatNumberFloat() + " "+ "★"
-            detailPageReviewsTextView
+            detailPageReviewsTextView.text = (args.appInfoModel.numberRatings.toDouble()/10000).toInt().toString()+ "k reviews"
             detailPageSizeTextView.text =
                 (args.appInfoModel.size.toDouble() / 100000000).formatNumberDouble()+ " " + "MB"
             detailPageDownloadValueTextView.text = args.appInfoModel.downloads
@@ -96,7 +97,7 @@ class DetailFragment: Fragment() {
                 ((args.appInfoModel.ratings5.toDouble() / totalRating) * 100).toInt()
             progressBarOne.progress = progressOnePercent
 
-            detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings.toString()
+            detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings.toInt().separatorNumbers()
 
             detailPageAboutNextImageView.setOnClickListener {
                 findNavController().navigate(DetailFragmentDirections.actionToAboutAppFragment(args.appInfoModel))
