@@ -12,7 +12,7 @@ interface ApiService {
         @Query("cat_key") catKey: String,
         @Query("country") country: String = "US",
         @Query("limit") limit: String = "10",
-        @Query("access_token") accessToken: String = "15299d85e12935fd9b403efedbdd9c11167f8715",
+        @Query("access_token") accessToken: String = "43bde3f4e42466435aab1b279ac81061a1abd076",
     ): Call<AppListResponseModel>
 
 }
