@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.samadihadis.androidappstore.R
 import com.samadihadis.androidappstore.data.AppInfoModel
+import com.samadihadis.androidappstore.util.Utils.orEmpty
 import com.samadihadis.androidappstore.util.formatNumberFloat
 
 class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
@@ -50,7 +51,7 @@ class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
                 appItemClickListener?.invoke(appList[position])
             }
             installButton.setOnClickListener{
-                onInstallClicked?.invoke(appList[position].packageName ?: "")
+                onInstallClicked?.invoke(appList[position].packageName.orEmpty())
             }
         }
     }
