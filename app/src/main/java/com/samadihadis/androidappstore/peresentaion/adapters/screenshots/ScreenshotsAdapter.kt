@@ -12,7 +12,7 @@ import com.samadihadis.androidappstore.data.AppInfoModel
 
 class ScreenshotsAdapter : RecyclerView.Adapter<ScreenshotsViewHolder>() {
 
-    private var appList: MutableList<AppInfoModel> = mutableListOf()
+    private var screenshotList: MutableList<String> = mutableListOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,20 +25,20 @@ class ScreenshotsAdapter : RecyclerView.Adapter<ScreenshotsViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return appList.size
+        return screenshotList.size
     }
 
-    fun addItemList(appModelList: List<AppInfoModel>) {
-        appList.addAll(appModelList)
-        notifyItemRangeInserted(appList.size - 1, appModelList.size)
+    fun addItemList(screenshotUrlList: List<String>) {
+        screenshotList.addAll(screenshotUrlList)
+        notifyItemRangeInserted(screenshotList.size - 1, screenshotUrlList.size)
     }
 
     override fun onBindViewHolder(holder: ScreenshotsViewHolder, position: Int) {
         holder.apply {
             Glide.with(rootLayout.context)
-                .load(appList[position].screenshots)
+                .load(screenshotList[position])
                 .placeholder(R.drawable.banner_image_placeholder)
-                .transform(CenterCrop(), RoundedCorners(60))
+                .transform(CenterCrop(), RoundedCorners(30))
                 .into(iconImageView)
         }
     }

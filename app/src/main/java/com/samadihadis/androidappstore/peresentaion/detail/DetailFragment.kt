@@ -4,42 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
 import com.samadihadis.androidappstore.R
-import com.samadihadis.androidappstore.data.AppInfoModel
-import com.samadihadis.androidappstore.data.AppListResponseModel
 import com.samadihadis.androidappstore.databinding.FragmentDetailBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.screenshots.ScreenshotsAdapter
-import com.samadihadis.androidappstore.util.RetrofitClient
-import com.samadihadis.androidappstore.util.SharePreferencesManager
 import com.samadihadis.androidappstore.util.Utils
 import com.samadihadis.androidappstore.util.Utils.orEmpty
 import com.samadihadis.androidappstore.util.Utils.orZero
 import com.samadihadis.androidappstore.util.formatNumberDouble
 import com.samadihadis.androidappstore.util.formatNumberFloat
 import com.samadihadis.androidappstore.util.separatorNumbers
-import retrofit2.Call
-import retrofit2.Response
 
 class DetailFragment : Fragment() {
 
     private val args by navArgs<DetailFragmentArgs>()
     private lateinit var binding: FragmentDetailBinding
-    private var onInstallClicked: ((String) -> Unit)? = null
     private val screenshotsAdaptor by lazy {
         ScreenshotsAdapter()
     }
-    private val storage by lazy {
-        SharePreferencesManager(requireContext())
-    }
-    private var screenshotsList = listOf<AppInfoModel>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -50,65 +36,52 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupViews()
+        setupRatingViews()
         setupScreenshotsAdapter()
-        getDataScreenshots()
-        onInstallButtonClickListener {
-            Utils.openMarket(requireContext(), it)
+        setupClickListener()
+    }
+
+    private fun setupViews() = with(binding) {
+        Glide.with(requireContext())
+            .load(args.appInfoModel.icon72)
+            .placeholder(R.drawable.banner_image_placeholder)
+            .into(detailPageIconImageView)
+        detailPageTitleTextView.text = args.appInfoModel.title
+        detailPageTypeTextView.text = args.appInfoModel.category
+        detailPageRatingOneTextView.text = args.appInfoModel.rating?.formatNumberFloat() + " " + "★"
+        detailPageReviewsTextView.text = (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt().toString() + "k reviews"
+        detailPageSizeTextView.text = (args.appInfoModel.size?.toDouble().orZero() / 100000000).formatNumberDouble() + " " + "MB"
+        detailPageDownloadValueTextView.text = args.appInfoModel.downloads
+        detailPageAboutValueTextView.text = args.appInfoModel.description
+    }
+
+    private fun setupClickListener() = with(binding) {
+        detailPageAboutNextImageView.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.actionToAboutAppFragment(args.appInfoModel))
         }
-        binding.apply {
-            Glide.with(requireContext())
-                .load(args.appInfoModel.icon72)
-                .placeholder(R.drawable.banner_image_placeholder)
-                .into(detailPageIconImageView)
-            detailPageTitleTextView.text = args.appInfoModel.title
-            detailPageTypeTextView.text = args.appInfoModel.category
-            detailPageRatingOneTextView.text =
-                args.appInfoModel.rating?.formatNumberFloat() + " " + "★"
-            detailPageReviewsTextView.text =
-                (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt()
-                    .toString() + "k reviews"
-            detailPageSizeTextView.text =
-                (args.appInfoModel.size?.toDouble().orZero() / 100000000).formatNumberDouble() + " " + "MB"
-            detailPageDownloadValueTextView.text = args.appInfoModel.downloads
-            detailPageInstallButton.setOnClickListener {
-                onInstallClicked?.invoke(args.appInfoModel.packageName.orEmpty())
-            }
-            detailPageAboutValueTextView.text = args.appInfoModel.description
-            detailPageRatingTwoTextView.text = args.appInfoModel.rating?.formatNumberFloat()
-
-            detailPageRatingBar.rating = args.appInfoModel.rating.orZero()
-
-
-            val totalRating = args.appInfoModel.numberRatings?.toDouble().orZero()
-
-            val progressFivePercent =
-                ((args.appInfoModel.ratings1?.toDouble().orZero() / totalRating) * 100).toInt()
-            progressBarFive.progress = progressFivePercent
-
-            val progressFourPercent =
-                ((args.appInfoModel.ratings2?.toDouble().orZero() / totalRating) * 100).toInt()
-            progressBarFour.progress = progressFourPercent
-
-            val progressThreePercent =
-                ((args.appInfoModel.ratings3?.toDouble().orZero() / totalRating) * 100).toInt()
-            progressBarThree.progress = progressThreePercent
-
-            val progressTwoPercent =
-                ((args.appInfoModel.ratings4?.toDouble().orZero() / totalRating) * 100).toInt()
-            progressBarTow.progress = progressTwoPercent
-
-            val progressOnePercent =
-                ((args.appInfoModel.ratings5?.toDouble().orZero() / totalRating) * 100).toInt()
-            progressBarOne.progress = progressOnePercent
-
-            detailPageNumberOfRatingTextView.text =
-                args.appInfoModel.numberRatings?.toInt()?.separatorNumbers()
-
-            detailPageAboutNextImageView.setOnClickListener {
-                findNavController().navigate(DetailFragmentDirections.actionToAboutAppFragment(args.appInfoModel))
-            }
+        detailPageInstallButton.setOnClickListener {
+            Utils.openMarket(requireContext(), args.appInfoModel.packageName.orEmpty())
         }
+    }
+
+    private fun setupRatingViews() = with(binding) {
+        val totalRating = args.appInfoModel.numberRatings?.toDouble().orZero()
+
+        detailPageRatingBar.rating = args.appInfoModel.rating.orZero()
+        detailPageRatingTwoTextView.text = args.appInfoModel.rating?.formatNumberFloat()
+        detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings?.toInt()?.separatorNumbers()
+
+        progressBarFive.progress = ((args.appInfoModel.ratings1?.toDouble().orZero() / totalRating) * 100).toInt()
+
+        progressBarFour.progress = ((args.appInfoModel.ratings2?.toDouble().orZero() / totalRating) * 100).toInt()
+
+        progressBarThree.progress = ((args.appInfoModel.ratings3?.toDouble().orZero() / totalRating) * 100).toInt()
+
+        progressBarTow.progress = ((args.appInfoModel.ratings4?.toDouble().orZero() / totalRating) * 100).toInt()
+
+        progressBarOne.progress = ((args.appInfoModel.ratings5?.toDouble().orZero() / totalRating) * 100).toInt()
+
     }
 
     private fun setupScreenshotsAdapter() {
@@ -120,63 +93,9 @@ class DetailFragment : Fragment() {
             )
             adapter = screenshotsAdaptor
         }
-    }
-
-    private fun getDataScreenshots() {
-        val applicationCatKeyResponseJsonFormatString =
-            storage.retrieveString(args.appInfoModel.catKey.orEmpty())
-        if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
-            val appListResponseModel = Gson().fromJson(
-                applicationCatKeyResponseJsonFormatString,
-                AppListResponseModel::class.java
-            )
-            screenshotsList = appListResponseModel?.appList!!
-            screenshotsAdaptor.addItemList(screenshotsList)
-        } else {
-            RetrofitClient.apiService.topGoogleAppCharts(
-                catKey = args.appInfoModel.catKey.orEmpty()
-            ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
-                override fun onResponse(
-                    call: Call<AppListResponseModel>,
-                    response: Response<AppListResponseModel>
-                ) {
-                    onServerResponseScreenshots(response)
-                }
-
-                override fun onFailure(call: Call<AppListResponseModel>, t: Throwable) {
-                    Toast.makeText(
-                        requireContext(),
-                        "${t.localizedMessage}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
+        args.appInfoModel.screenshots?.let {
+            screenshotsAdaptor.addItemList(it)
         }
-    }
-
-
-    private fun onServerResponseScreenshots(response: Response<AppListResponseModel>) {
-        if (response.isSuccessful) {
-            if (!response.body()?.appList.isNullOrEmpty()) {
-
-                val appListResponseModel: AppListResponseModel? = response.body()
-                val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
-                storage.saveString(
-                    args.appInfoModel.catKey.orEmpty(),
-                    applicationCatKeyResponseJsonFormatString
-                )
-                screenshotsList = appListResponseModel?.appList!!
-                screenshotsAdaptor.addItemList(screenshotsList)
-            } else {
-                Toast.makeText(requireContext(), "List is Empty!", Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            Toast.makeText(requireContext(), "Got an error!", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun onInstallButtonClickListener(listener: ((String) -> Unit)) {
-        onInstallClicked = listener
     }
 
 }
