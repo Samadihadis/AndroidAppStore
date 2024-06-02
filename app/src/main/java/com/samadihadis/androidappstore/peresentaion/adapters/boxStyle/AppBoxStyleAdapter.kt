@@ -35,7 +35,7 @@ class AppBoxStyleAdapter : RecyclerView.Adapter<AppBoxStyleViewHolder>() {
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
-            ratingTextView.text = rating.formatNumberFloat() + " " + "★"
+            ratingTextView.text = rating?.formatNumberFloat() + " " + "★"
             descriptionTextView.text = appList[position].shortDesc
             Glide.with(rootLayout.context)
                 .load(appList[position].icon72)

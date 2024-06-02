@@ -178,14 +178,12 @@ class GameHomeFragment : Fragment() {
     private fun onServerResponseBannerStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
-
                 val appListResponseModel: AppListResponseModel? = response.body()
                 val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
                 storage.saveString(
                    Constant.KAT_KEY_GAME_STRATEGY,
                     applicationCatKeyResponseJsonFormatString
                 )
-
                 stopLoadingState()
                 appBannerStyleInfoList = appListResponseModel?.appList!!
                 appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
@@ -240,7 +238,6 @@ class GameHomeFragment : Fragment() {
                     Constant.KAT_KEY_GAME_ACTION,
                     applicationCatKeyResponseJsonFormatString
                 )
-
                 stopLoadingState()
                 appMediumDetailStyleInfoList = appListResponseModel?.appList!!
                 appMediumDetailStyleAdaptor.addItemList(appMediumDetailStyleInfoList)
