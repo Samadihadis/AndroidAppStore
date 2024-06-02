@@ -9,9 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
 
-
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/aboutNextImageView"
+            android:id="@+id/closeImageView"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
@@ -30,7 +29,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/baseline_apps_24"
-            app:layout_constraintStart_toEndOf="@id/aboutNextImageView"
+            app:layout_constraintStart_toEndOf="@id/closeImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView

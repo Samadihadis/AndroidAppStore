@@ -35,8 +35,8 @@ class AboutAppFragment : Fragment() {
                 .into(applicationImageView)
             titleValueTextView.text = args.appInfoModel.title
             aboutValueTextView.text = args.appInfoModel.description
-            aboutNextImageView.setOnClickListener {
-                findNavController().navigate(AboutAppFragmentDirections.actionToDetailFragment(args.appInfoModel))
+            closeImageView.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

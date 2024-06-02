@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/appHomeFragment">
+
     <fragment
         android:id="@+id/appHomeFragment"
         android:name="com.samadihadis.androidappstore.peresentaion.apps.AppHomeFragment"
@@ -67,9 +68,6 @@
         <argument
             android:name="appInfoModel"
             app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
-        <action
-            android:id="@+id/action_to_detailFragment"
-            app:destination="@+id/detailFragment" />
     </fragment>
 
 </navigation>
