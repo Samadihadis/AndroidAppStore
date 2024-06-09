@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.textview.MaterialTextView
+    <View
         android:id="@+id/titleShimmerStyleTextView"
         android:layout_width="270dp"
         android:layout_height="30dp"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <View
         android:id="@+id/iconShimmerStyleImageView"
         android:layout_width="60dp"
         android:layout_height="30dp"

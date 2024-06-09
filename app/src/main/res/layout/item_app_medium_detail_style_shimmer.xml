@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootItemMediumDetailStyleLayout"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground">
+    android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <View
         android:id="@+id/mediumDetailStyleImageView"
         android:layout_width="210dp"
         android:layout_height="110dp"
@@ -18,44 +17,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <View
         android:id="@+id/mediumDetailStyleTitleTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="10dp"
         android:background="@color/shimmer"
-        android:maxLength="20"
-        android:textColor="#121212"
-        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/mediumDetailStyleImageView"
         app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleImageView"
         app:layout_constraintTop_toBottomOf="@+id/mediumDetailStyleImageView"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <View
         android:id="@+id/mediumDetailStyleCategoryTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
         android:background="@color/shimmer"
-        android:maxLength="20"
-        android:textColor="#121212"
-        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleTitleTextView"
         app:layout_constraintTop_toBottomOf="@+id/mediumDetailStyleTitleTextView" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <View
         android:id="@+id/mediumDetailStyleRatingTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginVertical="4dp"
         android:layout_marginEnd="16dp"
         android:background="@color/shimmer"
-        android:textColor="#121212"
-        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/mediumDetailStyleCategoryTextView"

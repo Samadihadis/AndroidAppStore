@@ -4,10 +4,9 @@
     android:id="@+id/rootItemSmallDetailStyleLayout"
     android:layout_width="130dp"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
     android:paddingHorizontal="8dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <View
         android:id="@+id/smallDetailStyleIconImageView"
         android:layout_width="114dp"
         android:layout_height="114dp"
@@ -17,31 +16,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <View
         android:id="@+id/smallDetailStyleTitleTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginTop="8dp"
         android:background="@color/shimmer"
-        android:lines="1"
-        android:maxLength="15"
-        android:textColor="#121212"
-        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smallDetailStyleIconImageView" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <View
         android:id="@+id/smallDetailStyleAppRatingTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
         android:background="@color/shimmer"
-        android:lines="1"
-        android:maxLength="10"
-        android:textColor="#121212"
-        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
