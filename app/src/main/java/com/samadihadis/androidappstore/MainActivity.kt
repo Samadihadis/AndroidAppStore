@@ -10,7 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.samadihadis.androidappstore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -26,6 +28,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController , appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
-        supportActionBar?.hide()
+//        supportActionBar?.hide()
     }
 }
