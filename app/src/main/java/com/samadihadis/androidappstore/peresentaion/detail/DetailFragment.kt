@@ -36,24 +36,18 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViews()
+        setupIconApp()
+        setupInformationApp()
         setupRatingViews()
         setupScreenshotsAdapter()
         setupClickListener()
     }
 
-    private fun setupViews() = with(binding) {
+    private fun setupIconApp() = with(binding) {
         Glide.with(requireContext())
             .load(args.appInfoModel.icon72)
             .placeholder(R.drawable.banner_image_placeholder)
             .into(detailPageIconImageView)
-        detailPageTitleTextView.text = args.appInfoModel.title
-        detailPageTypeTextView.text = args.appInfoModel.category
-        detailPageRatingOneTextView.text = args.appInfoModel.rating?.formatNumberFloat() + " " + "★"
-        detailPageReviewsTextView.text = (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt().toString() + "k reviews"
-        detailPageSizeTextView.text = (args.appInfoModel.size?.toDouble().orZero() / 100000000).formatNumberDouble() + " " + "MB"
-        detailPageDownloadValueTextView.text = args.appInfoModel.downloads
-        detailPageAboutValueTextView.text = args.appInfoModel.description
     }
 
     private fun setupClickListener() = with(binding) {
@@ -65,6 +59,15 @@ class DetailFragment : Fragment() {
         }
     }
 
+    private fun setupInformationApp() = with(binding){
+        detailPageTitleTextView.text = args.appInfoModel.title
+        detailPageTypeTextView.text = args.appInfoModel.category
+        detailPageRatingOneTextView.text = args.appInfoModel.rating?.formatNumberFloat() + " " + "★"
+        detailPageReviewsTextView.text = (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt().toString() + "k reviews"
+        detailPageSizeTextView.text = (args.appInfoModel.size?.toDouble().orZero() / 100000000).formatNumberDouble() + " " + "MB"
+        detailPageDownloadValueTextView.text = args.appInfoModel.downloads
+        detailPageAboutValueTextView.text = args.appInfoModel.description
+    }
     private fun setupRatingViews() = with(binding) {
         val totalRating = args.appInfoModel.numberRatings?.toDouble().orZero()
 
