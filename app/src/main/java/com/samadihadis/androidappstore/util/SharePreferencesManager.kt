@@ -45,6 +45,17 @@ class SharePreferencesManager(context: Context) {
         return pref.getBoolean(key, false)
     }
 
+    fun saveTheme(key: String , value: Boolean){
+        editor.apply {
+            putBoolean(key , value)
+            commit()
+        }
+    }
+
+    fun retrieveTheme(key: String , value: Boolean) : Boolean{
+        return pref.getBoolean(key , value)
+    }
+
 
     companion object {
         private const val PREF_FILE_NAME = "share_pref"

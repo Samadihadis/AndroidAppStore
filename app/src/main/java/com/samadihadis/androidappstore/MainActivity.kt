@@ -2,17 +2,21 @@ package com.samadihadis.androidappstore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.samadihadis.androidappstore.databinding.ActivityMainBinding
+import com.samadihadis.androidappstore.util.SharePreferencesManager
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+    private val storage by lazy {
+        SharePreferencesManager(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -29,5 +33,16 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController , appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
 //        supportActionBar?.hide()
+
+
+        val isDarkModeEnabled = storage.retrieveTheme("isDarkModeEnabled", false)
+
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDarkModeEnabled) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+        )
     }
 }

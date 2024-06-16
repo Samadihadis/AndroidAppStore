@@ -8,6 +8,4 @@ object Constant {
     const val KAT_KEY_GAME_ACTION = "GAME_ACTION"
     const val KAT_KEY_GAME_CASUAL = "GAME_CASUAL"
     const val KAT_KEY_GAME_STRATEGY = "GAME_STRATEGY"
-
-
 }
