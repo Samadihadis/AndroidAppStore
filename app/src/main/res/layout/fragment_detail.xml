@@ -86,6 +86,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/download_icon"
+                    android:tint="@color/gray"
                     app:layout_constraintEnd_toEndOf="@id/detailPageSizeTextView"
                     app:layout_constraintStart_toStartOf="@id/detailPageSizeTextView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -169,7 +170,7 @@
             android:layout_height="25dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/next"
-            android:tint="#595757"
+            android:tint="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/detailPageAboutTitleTextView" />
 
