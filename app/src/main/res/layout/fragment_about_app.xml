@@ -9,27 +9,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/closeImageView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:rotation="180"
-            android:src="@drawable/next"
-            android:tint="@color/gray"
-            app:layout_constraintBottom_toBottomOf="@id/applicationImageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/applicationImageView" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/applicationImageView"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/baseline_apps_24"
-            app:layout_constraintStart_toEndOf="@id/closeImageView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -38,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Title"
-            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/applicationImageView"
@@ -51,7 +38,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="Detail"
-            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/applicationImageView"
             app:layout_constraintTop_toBottomOf="@id/titleValueTextView"
@@ -74,7 +60,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:text="About this app"
-            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +72,6 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:text="Sample App/Game Description"
-            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/aboutTextView"
             app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />

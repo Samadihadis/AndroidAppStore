@@ -16,10 +16,12 @@ import com.samadihadis.androidappstore.databinding.FragmentGameHomeBinding
 import com.samadihadis.androidappstore.peresentaion.adapters.bannerStyle.AppBannerStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.boxStyle.AppBoxStyleAdapter
 import com.samadihadis.androidappstore.peresentaion.adapters.mediumDetailStyle.AppMediumDetailStyleAdapter
-import com.samadihadis.androidappstore.peresentaion.apps.AppHomeFragmentDirections
-import com.samadihadis.androidappstore.util.Constant
+import com.samadihadis.androidappstore.util.Constant.KAT_KEY_GAME_ACTION
+import com.samadihadis.androidappstore.util.Constant.KAT_KEY_GAME_CASUAL
+import com.samadihadis.androidappstore.util.Constant.KAT_KEY_GAME_STRATEGY
 import com.samadihadis.androidappstore.util.RetrofitClient
 import com.samadihadis.androidappstore.util.SharePreferencesManager
+import com.samadihadis.androidappstore.util.Utils
 import com.samadihadis.androidappstore.util.gone
 import com.samadihadis.androidappstore.util.visible
 import retrofit2.Call
@@ -74,12 +76,12 @@ class GameHomeFragment : Fragment() {
     private fun setupViews() = with(binding) {
         nextMediumDetailStyleImageView.setOnClickListener {
             findNavController().navigate(
-                GameHomeFragmentDirections.actionToAppListFragment(Constant.KAT_KEY_GAME_ACTION)
+                GameHomeFragmentDirections.actionToAppListFragment(KAT_KEY_GAME_ACTION)
             )
         }
         nextBoxStyleImageView.setOnClickListener {
             findNavController().navigate(
-                GameHomeFragmentDirections.actionToAppListFragment(Constant.KAT_KEY_GAME_CASUAL)
+                GameHomeFragmentDirections.actionToAppListFragment(KAT_KEY_GAME_CASUAL)
             )
         }
     }
@@ -110,6 +112,9 @@ class GameHomeFragment : Fragment() {
         with(binding.bannerStyleRecyclerView) {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = appBannerStyleAdaptor
+        }
+        appBannerStyleAdaptor.onInstallButtonClickListener {
+            Utils.openMarket(requireContext(), it)
         }
         appBannerStyleAdaptor.onItemBannerStyleClickListener {
             findNavController().navigate(
@@ -144,7 +149,7 @@ class GameHomeFragment : Fragment() {
 
     private fun getDataBannerStyle() {
         val applicationCatKeyResponseJsonFormatString =
-            storage.retrieveString(Constant.KAT_KEY_GAME_STRATEGY)
+            storage.retrieveString(KAT_KEY_GAME_STRATEGY)
         if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
             val appListResponseModel = Gson().fromJson(
                 applicationCatKeyResponseJsonFormatString,
@@ -155,7 +160,7 @@ class GameHomeFragment : Fragment() {
             appBannerStyleAdaptor.addItemList(appBannerStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                catKey = Constant.KAT_KEY_GAME_STRATEGY
+                catKey = KAT_KEY_GAME_STRATEGY
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -181,7 +186,7 @@ class GameHomeFragment : Fragment() {
                 val appListResponseModel: AppListResponseModel? = response.body()
                 val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
                 storage.saveString(
-                   Constant.KAT_KEY_GAME_STRATEGY,
+                   KAT_KEY_GAME_STRATEGY,
                     applicationCatKeyResponseJsonFormatString
                 )
                 stopLoadingState()
@@ -197,7 +202,7 @@ class GameHomeFragment : Fragment() {
 
     private fun getDataMediumDetailStyle() {
         val applicationCatKeyResponseJsonFormatString =
-            storage.retrieveString(Constant.KAT_KEY_GAME_ACTION)
+            storage.retrieveString(KAT_KEY_GAME_ACTION)
         if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
             val appListResponseModel = Gson().fromJson(
                 applicationCatKeyResponseJsonFormatString,
@@ -208,7 +213,7 @@ class GameHomeFragment : Fragment() {
             appMediumDetailStyleAdaptor.addItemList(appMediumDetailStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                catKey = Constant.KAT_KEY_GAME_ACTION
+                catKey = KAT_KEY_GAME_ACTION
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -235,7 +240,7 @@ class GameHomeFragment : Fragment() {
                 val appListResponseModel: AppListResponseModel? = response.body()
                 val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
                 storage.saveString(
-                    Constant.KAT_KEY_GAME_ACTION,
+                    KAT_KEY_GAME_ACTION,
                     applicationCatKeyResponseJsonFormatString
                 )
                 stopLoadingState()
@@ -251,7 +256,7 @@ class GameHomeFragment : Fragment() {
 
     private fun getDataBoxStyle() {
         val applicationCatKeyResponseJsonFormatString =
-            storage.retrieveString(Constant.KAT_KEY_GAME_CASUAL)
+            storage.retrieveString(KAT_KEY_GAME_CASUAL)
         if (!applicationCatKeyResponseJsonFormatString.isNullOrEmpty()) {
             val appListResponseModel = Gson().fromJson(
                 applicationCatKeyResponseJsonFormatString,
@@ -262,7 +267,7 @@ class GameHomeFragment : Fragment() {
             appBoxStyleAdapter.addItemList(appBoxStyleInfoList)
         } else {
             RetrofitClient.apiService.topGoogleAppCharts(
-                catKey = Constant.KAT_KEY_GAME_CASUAL
+                catKey = KAT_KEY_GAME_CASUAL
             ).enqueue(object : retrofit2.Callback<AppListResponseModel> {
                 override fun onResponse(
                     call: Call<AppListResponseModel>,
@@ -289,7 +294,7 @@ class GameHomeFragment : Fragment() {
                 val appListResponseModel: AppListResponseModel? = response.body()
                 val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
                 storage.saveString(
-                    Constant.KAT_KEY_GAME_CASUAL,
+                    KAT_KEY_GAME_CASUAL,
                     applicationCatKeyResponseJsonFormatString
                 )
 
