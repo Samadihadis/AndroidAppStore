@@ -67,8 +67,11 @@
                     android:gravity="center"
                     android:text="Rating"
                     android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/detailPageSizeImageView"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/detailPageReviewsTextView"
@@ -78,52 +81,56 @@
                     android:gravity="center"
                     android:text="Reviews"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/detailPageRatingOneTextView" />
+                    app:layout_constraintEnd_toEndOf="@+id/detailPageRatingOneTextView"
+                    app:layout_constraintStart_toStartOf="@+id/detailPageRatingOneTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/detailPageRatingOneTextView" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/detailPageSizeImageView"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:src="@drawable/download_icon"
                     android:tint="@color/gray"
-                    app:layout_constraintEnd_toEndOf="@id/detailPageSizeTextView"
-                    app:layout_constraintStart_toStartOf="@id/detailPageSizeTextView"
+                    app:layout_constraintEnd_toStartOf="@id/detailPageDownloadValueTextView"
+                    app:layout_constraintStart_toEndOf="@id/detailPageRatingOneTextView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/detailPageSizeTextView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="Size"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/detailPageReviewsTextView"
-                    app:layout_constraintTop_toTopOf="@id/detailPageReviewsTextView" />
+                    app:layout_constraintEnd_toEndOf="@+id/detailPageSizeImageView"
+                    app:layout_constraintStart_toStartOf="@+id/detailPageSizeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/detailPageSizeImageView" />
 
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/detailPageDownloadTitleTextView"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Download"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@id/detailPageDownloadValueTextView"
-                    app:layout_constraintStart_toStartOf="@id/detailPageDownloadValueTextView"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/detailPageDownloadValueTextView"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:gravity="center"
-                    android:text="Download"
+                    tools:text="Download"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/detailPageSizeTextView"
-                    app:layout_constraintTop_toTopOf="@id/detailPageSizeTextView" />
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/detailPageSizeImageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/detailPageDownloadTitleTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Downloads"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/detailPageDownloadValueTextView"
+                    app:layout_constraintStart_toStartOf="@+id/detailPageDownloadValueTextView"
+                    app:layout_constraintTop_toBottomOf="@id/detailPageDownloadValueTextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
