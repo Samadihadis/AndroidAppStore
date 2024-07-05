@@ -26,7 +26,7 @@ Feature's:
 
 <h4>ScreenShots:</h4>
 <div>
-  <img src="https://github.com/Samadihadis/IMDBVideoApplication/blob/master/screenshots/Version3_Page1_Intro.jpg" width="150">
+  <img src="https://github.com/Samadihadis/IMDBVideoApplication/blob/master/screenshots/Version3_Page1_In.jpg" width="150">
 </div>
 
 
