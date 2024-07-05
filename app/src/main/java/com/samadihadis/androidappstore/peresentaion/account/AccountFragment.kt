@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.samadihadis.androidappstore.databinding.FragmentAccountBinding
 import com.samadihadis.androidappstore.util.SharePreferencesManager
+import com.samadihadis.androidappstore.util.SharePreferencesManager.Companion.IS_DARK_MODE_ENABLE
 
 class AccountFragment : Fragment() {
 
@@ -26,19 +27,19 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        changeThemeSettings()
+    }
 
-        val isDarkModeEnabled = storage.retrieveTheme("isDarkModeEnabled", false)
-        binding.themeSwitch.isChecked = isDarkModeEnabled
-
-        binding.themeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+    private fun changeThemeSettings() = binding.darkThemeSettings.themeSwitch.apply {
+        isChecked = storage.retrieveBoolean(IS_DARK_MODE_ENABLE)
+        setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                storage.saveBoolean(IS_DARK_MODE_ENABLE , true)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                storage.saveTheme("isDarkModeEnabled" , true)
             } else {
+                storage.saveBoolean(IS_DARK_MODE_ENABLE , false)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                storage.saveTheme("isDarkModeEnabled" , false)
             }
         }
     }
-
 }

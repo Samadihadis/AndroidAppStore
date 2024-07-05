@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.samadihadis.androidappstore.databinding.ActivityMainBinding
 import com.samadihadis.androidappstore.util.SharePreferencesManager
+import com.samadihadis.androidappstore.util.SharePreferencesManager.Companion.IS_DARK_MODE_ENABLE
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,8 +35,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 //        supportActionBar?.hide()
 
-
-        val isDarkModeEnabled = storage.retrieveTheme("isDarkModeEnabled", false)
+        val isDarkModeEnabled = storage.retrieveBoolean(IS_DARK_MODE_ENABLE)
 
         AppCompatDelegate.setDefaultNightMode(
             if (isDarkModeEnabled) {
