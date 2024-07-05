@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/appHomeFragment">
+
+    <fragment
+        android:id="@+id/appHomeFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.apps.AppHomeFragment"
+        android:label="Apps"
+        tools:layout="@layout/fragment_app_home">
+        <action
+            android:id="@+id/action_to_appListFragment"
+            app:destination="@+id/appListFragment" />
+        <action
+            android:id="@+id/action_to_detailFragment"
+            app:destination="@+id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/appListFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.list.AppListFragment"
+        android:label="AppList"
+        tools:layout="@layout/fragment_app_list">
+        <argument
+            android:name="catKey"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_to_detailFragment"
+            app:destination="@+id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameHomeFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.games.GameHomeFragment"
+        android:label="Games"
+        tools:layout="@layout/fragment_game_home">
+        <action
+            android:id="@+id/action_to_appListFragment"
+            app:destination="@+id/appListFragment" />
+        <action
+            android:id="@+id/action_to_detailFragment"
+            app:destination="@+id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.account.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.detail.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="appInfoModel"
+            app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
+        <action
+            android:id="@+id/action_to_aboutAppFragment"
+            app:destination="@+id/aboutAppFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.samadihadis.androidappstore.peresentaion.detail.AboutAppFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_about_app">
+        <argument
+            android:name="appInfoModel"
+            app:argType="com.samadihadis.androidappstore.data.AppInfoModel" />
+    </fragment>
+
+</navigation>
