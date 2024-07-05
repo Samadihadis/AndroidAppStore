@@ -14,7 +14,7 @@ Feature's:
 - Bottom Navigation Support
 - Glide
 - Retrofit
-- Linear and Grid layout support
+- Linear and Grid layout manager support
 - Shimmer loading
 - SharePreferences
 - Open OS Package Installer 
