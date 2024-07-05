@@ -59,32 +59,51 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setupInformationApp() = with(binding){
+    private fun setupInformationApp() = with(binding) {
         detailPageTitleTextView.text = args.appInfoModel.title
         detailPageTypeTextView.text = args.appInfoModel.category
         detailPageRatingOneTextView.text = args.appInfoModel.rating?.formatNumberFloat() + " " + "★"
-        detailPageReviewsTextView.text = (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt().toString() + "k reviews"
-        detailPageSizeTextView.text = (args.appInfoModel.size?.toDouble().orZero() / 100000000).formatNumberDouble() + " " + "MB"
+        detailPageReviewsTextView.text =
+            (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt()
+                .toString() + "k reviews"
+        detailPageSizeTextView.text = (args.appInfoModel.size?.toDouble()
+            .orZero() / 100000000).formatNumberDouble() + " " + "MB"
         detailPageDownloadValueTextView.text = args.appInfoModel.downloads
         detailPageAboutValueTextView.text = args.appInfoModel.description
     }
+
     private fun setupRatingViews() = with(binding) {
-        val totalRating = args.appInfoModel.numberRatings?.toDouble().orZero()
 
         detailPageRatingBar.rating = args.appInfoModel.rating.orZero()
         detailPageRatingTwoTextView.text = args.appInfoModel.rating?.formatNumberFloat()
-        detailPageNumberOfRatingTextView.text = args.appInfoModel.numberRatings?.toInt()?.separatorNumbers()
+        detailPageNumberOfRatingTextView.text =
+            args.appInfoModel.numberRatings?.toInt()?.separatorNumbers()
 
-        progressBarFive.progress = ((args.appInfoModel.ratings1?.toDouble().orZero() / totalRating) * 100).toInt()
+        progressBarFive.progress = getRating(5)
 
-        progressBarFour.progress = ((args.appInfoModel.ratings2?.toDouble().orZero() / totalRating) * 100).toInt()
+        progressBarFour.progress = getRating(4)
 
-        progressBarThree.progress = ((args.appInfoModel.ratings3?.toDouble().orZero() / totalRating) * 100).toInt()
+        progressBarThree.progress = getRating(3)
 
-        progressBarTow.progress = ((args.appInfoModel.ratings4?.toDouble().orZero() / totalRating) * 100).toInt()
+        progressBarTow.progress = getRating(2)
 
-        progressBarOne.progress = ((args.appInfoModel.ratings5?.toDouble().orZero() / totalRating) * 100).toInt()
+        progressBarOne.progress = getRating(1)
 
+    }
+
+    private fun getRating(index: Int): Int {
+        val totalRating = args.appInfoModel.numberRatings?.toDouble().orZero()
+
+        val rating = when (index) {
+            1 -> args.appInfoModel.ratings1
+            2 -> args.appInfoModel.ratings2
+            3 -> args.appInfoModel.ratings3
+            4 -> args.appInfoModel.ratings4
+            5 -> args.appInfoModel.ratings5
+            else -> 0
+        }
+
+        return ((rating?.toDouble().orZero() / totalRating) * 100).toInt()
     }
 
     private fun setupScreenshotsAdapter() {
