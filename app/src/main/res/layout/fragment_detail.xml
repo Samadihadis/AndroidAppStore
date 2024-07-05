@@ -138,6 +138,7 @@
             android:backgroundTint="@color/blue"
             android:text="Install"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
