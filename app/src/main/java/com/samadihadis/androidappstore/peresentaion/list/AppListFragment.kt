@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
@@ -47,6 +48,11 @@ class AppListFragment : Fragment() {
         with(binding.gridStyleRecyclerView) {
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = appGridStyleAdapter
+        }
+        appGridStyleAdapter.onItemGridStyleClickListener {
+            findNavController().navigate(
+                AppListFragmentDirections.actionToDetailFragment(it)
+            )
         }
     }
 
