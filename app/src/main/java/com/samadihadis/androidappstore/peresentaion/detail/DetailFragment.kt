@@ -62,12 +62,12 @@ class DetailFragment : Fragment() {
     private fun setupInformationApp() = with(binding) {
         detailPageTitleTextView.text = args.appInfoModel.title
         detailPageTypeTextView.text = args.appInfoModel.category
-        detailPageRatingOneTextView.text = args.appInfoModel.rating?.formatNumberFloat() + " " + "★"
+        detailPageRatingOneTextView.text = "${args.appInfoModel.rating?.formatNumberFloat()} ★"
         detailPageReviewsTextView.text =
             (args.appInfoModel.numberRatings?.toDouble().orZero() / 10000).toInt()
                 .toString() + "k reviews"
         detailPageSizeTextView.text = (args.appInfoModel.size?.toDouble()
-            .orZero() / 100000000).formatNumberDouble() + " " + "MB"
+            .orZero() / 100000000).formatNumberDouble() + " MB"
         detailPageDownloadValueTextView.text = args.appInfoModel.downloads
         detailPageAboutValueTextView.text = args.appInfoModel.description
     }

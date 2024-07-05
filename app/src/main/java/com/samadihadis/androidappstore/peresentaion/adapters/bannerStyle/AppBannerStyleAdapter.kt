@@ -36,7 +36,7 @@ class AppBannerStyleAdapter : RecyclerView.Adapter<AppBannerStyleViewHolder>() {
             titleTextView.text = appList[position].title
             descriptionTextView.text = appList[position].shortDesc
             val rating = appList[position].rating
-            ratingTextView.text = rating?.formatNumberFloat() + " " + "★"
+            ratingTextView.text = "${rating?.formatNumberFloat()} ★"
             Glide.with(rootLayout.context)
                 .load(appList[position].featuredGraphic)
                 .placeholder(R.drawable.banner_image_placeholder)

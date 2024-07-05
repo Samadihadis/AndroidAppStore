@@ -49,10 +49,13 @@ class AppListFragment : Fragment() {
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = appGridStyleAdapter
         }
-        appGridStyleAdapter.onItemGridStyleClickListener {
-            findNavController().navigate(
-                AppListFragmentDirections.actionToDetailFragment(it)
-            )
+        appGridStyleAdapter.apply {
+            onItemGridStyleClickListener {
+                findNavController().navigate(
+                    AppListFragmentDirections.actionToDetailFragment(it)
+                )
+            }
+            clearListAll()
         }
     }
 
@@ -90,7 +93,6 @@ class AppListFragment : Fragment() {
     private fun onServerResponseGridStyle(response: Response<AppListResponseModel>) {
         if (response.isSuccessful) {
             if (!response.body()?.appList.isNullOrEmpty()) {
-
                 val appListResponseModel: AppListResponseModel? = response.body()
                 val applicationCatKeyResponseJsonFormatString = Gson().toJson(appListResponseModel)
                 storage.saveString(args.catKey, applicationCatKeyResponseJsonFormatString)

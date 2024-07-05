@@ -35,7 +35,7 @@ class AppSmallDetailStyleAdapter : RecyclerView.Adapter<AppSmallDetailStyleViewH
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
-            ratingTextView.text = rating?.formatNumberFloat() + " " + "★"
+            ratingTextView.text = "${rating?.formatNumberFloat()} ★"
             Glide.with(rootLayout.context)
                 .load(appList[position].icon72)
                 .placeholder(R.drawable.banner_image_placeholder)

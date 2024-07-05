@@ -39,7 +39,7 @@ class AppMediumDetailStyleAdapter : RecyclerView.Adapter<AppMediumDetailStyleVie
         holder.apply {
             titleTextView.text = appList[position].title
             val rating = appList[position].rating
-            ratingTextView.text = rating?.formatNumberFloat() + " " + "★"
+            ratingTextView.text = "${rating?.formatNumberFloat()} ★"
             downloadsTextView.text = appList[position].downloads
             Glide.with(rootLayout.context)
                 .load(appList[position].featuredGraphic)
