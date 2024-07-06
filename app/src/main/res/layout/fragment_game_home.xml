@@ -9,6 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/gamesToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Games"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bannerStyleRecyclerView"
@@ -16,7 +24,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/gamesToolbar" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mediumDetailStyleTitleTextView"
@@ -94,8 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            tools:visibility="visible"
-            app:shimmer_duration="2000">
+            app:shimmer_duration="2000"
+            tools:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -112,6 +120,7 @@
                     android:orientation="horizontal">
 
                     <include layout="@layout/item_app_medium_detail_style_shimmer" />
+
                     <include layout="@layout/item_app_medium_detail_style_shimmer" />
 
                 </LinearLayout>

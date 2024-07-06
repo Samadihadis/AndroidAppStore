@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController , appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
+        supportActionBar!!.hide()
 
         val isDarkModeEnabled = storage.retrieveBoolean(IS_DARK_MODE_ENABLE)
 
